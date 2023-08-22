@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
+// import * as dotenv from 'dotenv'
+// dotenv.config()
 
 const queryClient = new QueryClient()
 
