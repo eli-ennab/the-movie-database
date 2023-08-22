@@ -6,17 +6,16 @@ import PageNotFound from './pages/PageNotFound'
 import './assets/scss/App.scss'
 
 const App = () => {
+    return (
+            <>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Routes>
 
-return (
-        <>
-                <Routes>
-					<Route path="/" element={<HomePage />} />
-					<Route path="*" element={<PageNotFound />} />
-				</Routes>
-
-            <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
-        </>
-    )
+                <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+            </>
+        )
 }
 
 export default App
