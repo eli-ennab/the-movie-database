@@ -1,4 +1,5 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import './assets/scss/App.scss'
 
 const App = () => {
 
