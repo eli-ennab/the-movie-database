@@ -32,6 +32,5 @@ const get = async <T>(endpoint: string) => {
 
 export const getMovieGenres = () => {
     // return get<MovieGenresResponse>(`/movie/11?api_key=${VITE_API_KEY}`)
-    // return get<MovieGenresResponse>(`/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
-    return axios.get<MovieGenresResponse>(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
+    return get<MovieGenresResponse>(`/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
 }

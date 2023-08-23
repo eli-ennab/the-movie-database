@@ -8,7 +8,7 @@ const MovieGenresPage = () => {
         queryKey: ['test']
     })
 
-    console.log(getGenres.data?.data.genres)
+    console.log(getGenres.data?.genres)
 
     return (
         <div>
