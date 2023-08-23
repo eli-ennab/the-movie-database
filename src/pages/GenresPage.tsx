@@ -23,7 +23,7 @@ const GenresPage = () => {
                             as={Link}
                             to={`/genres/${genre.id}`}
                         > 
-                            name '{genre.name}'', id '{genre.id}'
+                            {genre.name}
                         </ListGroup.Item>
                     ))}
                 </ListGroup>
