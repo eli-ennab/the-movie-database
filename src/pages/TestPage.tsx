@@ -3,12 +3,12 @@ import { getMovieGenres } from '../services/testAPI'
 
 const MovieGenresPage = () => {
 
-    const { data } = useQuery({
+    const getGenres = useQuery({
         queryFn: getMovieGenres,
         queryKey: ['test']
     })
 
-    console.log(data?.genres)
+    console.log(getGenres.data?.data.genres)
 
     return (
         <div>

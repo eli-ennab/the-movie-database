@@ -2,7 +2,10 @@
  * Test API towards The Movie DB
  * Docs: https://developer.themoviedb.org/docs
  * 
- * For example, the list of all genres: https://api.themoviedb.org/3/genre/movie/list?language=en
+ * For example, the list of all genres: 
+ * https://api.themoviedb.org/3/genre/movie/list?language=en
+ * Or one movie:
+ * https://api.themoviedb.org/3/movie/550?api_key=${VITE_API_KEY}
  */
 
 import axios from 'axios'
@@ -28,5 +31,7 @@ const get = async <T>(endpoint: string) => {
 }
 
 export const getMovieGenres = () => {
-    return get<MovieGenresResponse>(`/movie/11?api_key=${VITE_API_KEY}`)
+    // return get<MovieGenresResponse>(`/movie/11?api_key=${VITE_API_KEY}`)
+    // return get<MovieGenresResponse>(`/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
+    return axios.get<MovieGenresResponse>(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
 }
