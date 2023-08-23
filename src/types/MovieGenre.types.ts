@@ -1,11 +1,11 @@
-export type MovieGenreResponse = {
+export type MovieListResponse = {
     page: number
-    results: GenreResult[]
+    results: MovieResult[]
     total_pages: number
     total_results: number
 }
 
-export type GenreResult = {
+export type MovieResult = {
     adult: false,
     backdrop_path: string | null
     genre_ids: [
