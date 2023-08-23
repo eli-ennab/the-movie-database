@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { getMovieGenres } from '../services/TheMovieDB_API'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 const GenresPage = () => {
 
@@ -8,12 +9,23 @@ const GenresPage = () => {
         queryKey: ['genres']
     })
 
-    console.log(getGenres.data?.genres)
-
     return (
-        <div>
-            
-        </div>
+        <>
+
+        <h1 className="py-4">All Genres</h1>
+
+        { getGenres.data && (
+            <ListGroup>
+                {getGenres.data.genres.map (genre => (
+                    <ListGroup.Item
+                        key={genre.id}
+                    > 
+                        {genre.name}
+                    </ListGroup.Item>
+                ))}
+            </ListGroup>
+        )} 
+        </>
     )
 }
 
