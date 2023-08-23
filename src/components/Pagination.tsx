@@ -6,8 +6,8 @@ interface IPaginationProps {
 	totalPages: number
 	hasPreviousPage: boolean
 	hasNextPage: boolean
-	onPreviousPage: () => void
-	onNextPage: () => void
+	// onPreviousPage: () => void
+	// onNextPage: () => void
 }
 
 const Pagination: React.FC<IPaginationProps> = ({
@@ -15,15 +15,15 @@ const Pagination: React.FC<IPaginationProps> = ({
 	totalPages,
 	hasPreviousPage,
 	hasNextPage,
-	onPreviousPage,
-	onNextPage,
+	// onPreviousPage,
+	// onNextPage,
 }) => {
 	return (
 		<div className="d-flex justify-content-between align-items-center">
 			<div className="prev">
 				<Button
 					disabled={!hasPreviousPage}
-					onClick={onPreviousPage}
+					// onClick={onPreviousPage}
 					variant="light"
 				>Previous Page</Button>
 			</div>
@@ -33,7 +33,7 @@ const Pagination: React.FC<IPaginationProps> = ({
 			<div className="next">
 				<Button
 					disabled={!hasNextPage}
-					onClick={onNextPage}
+					// onClick={onNextPage}
 					variant="light"
 				>Next Page</Button>
 			</div>

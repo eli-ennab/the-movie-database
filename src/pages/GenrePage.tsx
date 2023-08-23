@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
+import Pagination from '../components/Pagination'
 
 
 const GenrePage = () => {
@@ -13,11 +14,17 @@ const GenrePage = () => {
         queryKey: ['genre']
     })
 
+    if (data === undefined) {
+        return
+    }
+
     return (
         <>
             <h1 className="py-4">Which genre?</h1>
 
-            { data?.results && (
+            <p>Showing {data.results.length} results out of {data.total_results}</p>
+
+            { data.results && (
             <Row xs={1} md={3} lg={5} className="g-4">
                 {data.results.map(movie => (
                     <Col key={movie.id}>
@@ -36,6 +43,15 @@ const GenrePage = () => {
                 ))}
             </Row>
             )}
+
+            <Pagination
+                page={1}
+                totalPages={data!.total_pages}
+                hasPreviousPage={data!.page > 1}
+                hasNextPage={data!.page < 1} 
+                // onPreviousPage={} 
+                // onNextPage={}
+            />
         </>
     )
 }
