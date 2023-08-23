@@ -5,11 +5,14 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const Navigation = () => {
 	return (
-        <Navbar bg="dark" data-bs-theme="dark">
+        <Navbar bg="dark" data-bs-theme="dark" expand="md">
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     The Movie DB
                 </Navbar.Brand>
+
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link as={NavLink} end to="/genres">
                             Browse movies by genre
@@ -18,6 +21,7 @@ const Navigation = () => {
                             Search movies
                         </Nav.Link>
                     </Nav>
+                </Navbar.Collapse>
             </Container>
         </Navbar>
 	)
