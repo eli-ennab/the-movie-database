@@ -1,2 +1,26 @@
 @import "bootstrap/scss/bootstrap";
 @import 'config';
+
+body {
+    background-color: black;
+}
+
+h1,
+a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a,
+p {
+    font-family: 'Roboto', sans-serif;
+}
