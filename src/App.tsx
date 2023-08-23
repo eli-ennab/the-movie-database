@@ -1,6 +1,7 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import GenrePage from './pages/GenrePage'
 import GenresPage from './pages/GenresPage'
 import PageNotFound from './pages/PageNotFound'
 import Navigation from './components/Navigation'
@@ -17,6 +18,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/genres" element={<GenresPage />} />
+                        <Route path="/genres/:id" element={<GenrePage />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </Container>
