@@ -9,7 +9,8 @@ import axios from 'axios'
 import { MovieGenresResponse } from '../types/testType.types'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
-const API_KEY: string | undefined = process.env.API_KEY
+const VITE_API_KEY = import.meta.env.VITE_API_KEY
+// const VITE_BEARER_ACCESS_TOKEN = import.meta.env.VITE_BEARER_ACCESS_TOKEN
 
 const instance = axios.create({
     baseURL: BASE_URL,
@@ -27,5 +28,5 @@ const get = async <T>(endpoint: string) => {
 }
 
 export const getMovieGenres = () => {
-    return get<MovieGenresResponse>(`/movie/11?api_key=${API_KEY}`)
+    return get<MovieGenresResponse>(`/movie/11?api_key=${VITE_API_KEY}`)
 }
