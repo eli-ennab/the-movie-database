@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMovieGenres } from '../services/testAPI'
+import { getMovieGenres } from '../services/TheMovieDB_API'
 
-const MovieGenresPage = () => {
+const GenresPage = () => {
 
     const getGenres = useQuery({
         queryFn: getMovieGenres,
-        queryKey: ['test']
+        queryKey: ['genres']
     })
 
     console.log(getGenres.data?.genres)
@@ -17,4 +17,4 @@ const MovieGenresPage = () => {
     )
 }
 
-export default MovieGenresPage
+export default GenresPage

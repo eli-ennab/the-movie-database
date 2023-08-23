@@ -9,7 +9,7 @@
  */
 
 import axios from 'axios'
-import { MovieGenresResponse } from '../types/testType.types'
+import { MovieGenresResponse } from '../types/MovieGenres.types'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
