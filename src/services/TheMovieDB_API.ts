@@ -10,6 +10,7 @@
 
 import axios from 'axios'
 import { MovieGenresResponse } from '../types/MovieGenres.types'
+import { MovieGenreResponse } from '../types/MovieGenre.types'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
@@ -31,6 +32,9 @@ const get = async <T>(endpoint: string) => {
 }
 
 export const getMovieGenres = () => {
-    // return get<MovieGenresResponse>(`/movie/11?api_key=${VITE_API_KEY}`)
     return get<MovieGenresResponse>(`/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
+}
+
+export const getMovieGenre = () => {
+    return get<MovieGenreResponse>(`/discover/movie?api_key=${VITE_API_KEY}&language=en-US&sort_by=release_date.desc&page=1&with_genres=35`)    // hardcoding genre ID 35 which is Comedy
 }
