@@ -35,6 +35,6 @@ export const getMovieGenres = () => {
     return get<MovieGenresResponse>(`/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
 }
 
-export const getMovieGenre = () => {
-    return get<MovieGenreResponse>(`/discover/movie?api_key=${VITE_API_KEY}&language=en-US&sort_by=release_date.desc&page=1&with_genres=35`)    // hardcoding genre ID 35 which is Comedy
+export const getMovieGenre = (genreId: number, page = 1) => {
+    return get<MovieGenreResponse>(`/discover/movie?api_key=${VITE_API_KEY}&language=en-US&sort_by=release_date.desc&page=${page}&with_genres=${genreId}`)    // hardcoding genre ID 35 which is Comedy
 }

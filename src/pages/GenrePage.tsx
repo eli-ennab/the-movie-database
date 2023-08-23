@@ -1,19 +1,24 @@
 import { useQuery } from '@tanstack/react-query'
+import { useParams } from 'react-router-dom'
 import { getMovieGenre } from '../services/TheMovieDB_API'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
-import Pagination from '../components/Pagination'
-
+// import Pagination from '../components/Pagination'
 
 const GenrePage = () => {
+    const { id } = useParams()
+    const genreId = Number(id)
+    console.log("genre id", genreId)
 
-    const { data } = useQuery({
-        queryFn: getMovieGenre,
-        queryKey: ['genre']
-    })
-
+    const {
+        data,
+    } = useQuery(
+        ['genre', { genreId: genreId }, { currentPage: 1 }],
+        () => getMovieGenre(genreId, 1),
+    )
+    
     if (data === undefined) {
         return
     }
@@ -44,14 +49,14 @@ const GenrePage = () => {
             </Row>
             )}
 
-            <Pagination
+            {/* <Pagination
                 page={1}
-                totalPages={data!.total_pages}
-                hasPreviousPage={data!.page > 1}
-                hasNextPage={data!.page < 1} 
-                // onPreviousPage={} 
-                // onNextPage={}
-            />
+                totalPages={data.total_pages}
+                hasPreviousPage={data.page > 1}
+                hasNextPage={data.page < 1} 
+                onPreviousPage={} 
+                onNextPage={}
+            /> */}
         </>
     )
 }
