@@ -42,7 +42,7 @@ const HomePage = () => {
 				<Row xs={1} md={3} lg={5} className="g-4">
 					{topRatedMovies.data.results.slice(0, 10).map(movie => (
 						<Col key={movie.id}>
-							<MovieCard poster_path={movie.poster_path} title={movie.title} />
+							<MovieCard poster_path={movie.poster_path} title={movie.title} id={movie.id} />
 						</Col>
 					))}
 				</Row>
@@ -55,7 +55,7 @@ const HomePage = () => {
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {nowPlayingMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
-                            <MovieCard poster_path={movie.poster_path} title={movie.title} />
+                            <MovieCard poster_path={movie.poster_path} title={movie.title} id={movie.id} />
                         </Col>
                     ))}
                 </Row>
@@ -68,7 +68,7 @@ const HomePage = () => {
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {mostPopularMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
-                            <MovieCard poster_path={movie.poster_path} title={movie.title} />
+                            <MovieCard poster_path={movie.poster_path} title={movie.title} id={movie.id}/>
                         </Col>
                     ))}
                 </Row>
