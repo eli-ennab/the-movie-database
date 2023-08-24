@@ -11,6 +11,7 @@
 import axios from 'axios'
 import { MovieGenresResponse } from '../types/MovieGenres.types'
 import { MovieListResponse } from '../types/MovieGenre.types'
+import { MovieResponse } from '../types/MovieResponse'
 
 const BASE_URL = 'https://api.themoviedb.org/3'
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
@@ -50,3 +51,8 @@ export const getMostPopularMovies = () => {
 export const getNowPlayingMovies = () => {
     return get<MovieListResponse>(`/movie/now_playing?api_key=${VITE_API_KEY}&language=en-US`)
 }
+
+export const getMovie = (movieId: number) => {
+    return get<MovieResponse>(`/movie/${movieId}?api_key=${VITE_API_KEY}`)
+}
+
