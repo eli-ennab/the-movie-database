@@ -11,14 +11,16 @@ const MovieCard: React.FC<IProps> = ({ poster_path, title }) => {
 
     return (
         <Card>
-            <Card.Img variant="top" src={ URL + poster_path } />
+            <Card.Img variant="top"  src={ URL + poster_path } />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Button
-                    variant="light"
-                >
-                        Read more
-                </Button>
+                <div className="d-grid gap-2">
+                    <Button
+                        variant="dark"
+                    >
+                            Read more
+                    </Button>
+                </div>
             </Card.Body>
         </Card>
     )
