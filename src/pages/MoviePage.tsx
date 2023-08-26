@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMovie } from '../services/TheMovieDB_API'
+import { getMovie, getMovieCast } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
+// import { Link } from 'react-router-dom'
 
 const MoviePage = () => {
     const { id } = useParams()
@@ -16,11 +17,16 @@ const MoviePage = () => {
         () => getMovie(movieId),
     )
 
+    const getCast = useQuery(
+        ['cast', { movieId: movieId } ],
+        () => getMovieCast(movieId),
+    )
     
     if (data === undefined) {
         return
     }
     console.log(data.overview)
+    console.log(getCast.data?.cast)
 
     return (
         <>
@@ -35,13 +41,27 @@ const MoviePage = () => {
                             <ListGroup.Item>Popularity: {data.popularity}</ListGroup.Item>
                         </ListGroup>
                         <hr></hr>
-                        <h2>Actors</h2>
-                            <Card.Link href="#">Actor 1</Card.Link>
+                        <h2>Cast</h2>
+                        { getCast.data && (
+                            <ListGroup>
+                                {getCast.data.cast.map (cast => (
+                                    <ListGroup.Item
+                                        key={cast.id}
+                                        // action
+                                        // as={Link}
+                                        // to={`/`}
+                                    > 
+                                        {cast.name} - {cast.known_for_department}
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                        )} 
+                            {/* <Card.Link href="#">Actor 1</Card.Link>
                             <Card.Link href="#">Actor 2</Card.Link>
                         <hr></hr>
                         <h3>If you like this movie, you might like...</h3>
                             <Card.Link href="#">Movie 1</Card.Link>
-                            <Card.Link href="#">Movie 2</Card.Link>
+                            <Card.Link href="#">Movie 2</Card.Link> */}
                     </Card.Body>
             </Card>
         </>
