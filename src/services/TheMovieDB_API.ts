@@ -13,8 +13,10 @@ import { MovieGenresResponse } from '../types/MovieGenres.types'
 import { MovieListResponse } from '../types/MovieGenre.types'
 import { MovieResponse } from '../types/MovieResponse'
 
-const BASE_URL = 'https://api.themoviedb.org/3'
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
+const BASE_URL = 'https://api.themoviedb.org/3'
+const include_adult = 'include_adult=false'
+const language = 'language=en-US'
 // const VITE_BEARER_ACCESS_TOKEN = import.meta.env.VITE_BEARER_ACCESS_TOKEN
 
 const instance = axios.create({
@@ -37,7 +39,7 @@ export const getMovieGenres = () => {
 }
 
 export const getMovieGenre = (genreId: number, page = 1) => {
-    return get<MovieListResponse>(`/discover/movie?api_key=${VITE_API_KEY}&language=en-US&sort_by=release_date.desc&page=${page}&with_genres=${genreId}`)
+    return get<MovieListResponse>(`/discover/movie?api_key=${VITE_API_KEY}&${include_adult}&${language}&page=${page}&with_genres=${genreId}`)
 }
 
 export const getTopRatedMovies = () => {
