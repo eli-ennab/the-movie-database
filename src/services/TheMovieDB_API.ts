@@ -11,7 +11,8 @@
 import axios from 'axios'
 import { MovieGenresResponse } from '../types/MovieGenres.types'
 import { MovieListResponse } from '../types/MovieGenre.types'
-import { MovieResponse } from '../types/MovieResponse'
+import { MovieResponse } from '../types/Movie.types'
+import { MovieCastResponse } from '../types/MovieCast.types'
 
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
@@ -25,7 +26,7 @@ const instance = axios.create({
     headers: {
         "Content-Type": 'application/json',
         "Accept": "application/json",
-        // "Authorization": "Bearer ACCESS_TOKEN",
+        // "Authorization": "Bearer VITE_BEARER_ACCESS_TOKEN",
     }
 })
 
@@ -43,18 +44,22 @@ export const getMovieGenre = (genreId: number, page = 1) => {
 }
 
 export const getTopRatedMovies = () => {
-    return get<MovieListResponse>(`/movie/top_rated?api_key=${VITE_API_KEY}&language=en-US`)
+    return get<MovieListResponse>(`/movie/top_rated?api_key=${VITE_API_KEY}&${include_adult}&${language}`)
 }
 
 export const getMostPopularMovies = () => {
-    return get<MovieListResponse>(`/movie/popular?api_key=${VITE_API_KEY}&language=en-US`)
+    return get<MovieListResponse>(`/movie/popular?api_key=${VITE_API_KEY}&${include_adult}&${language}`)
 }
 
 export const getNowPlayingMovies = () => {
-    return get<MovieListResponse>(`/movie/now_playing?api_key=${VITE_API_KEY}&language=en-US`)
+    return get<MovieListResponse>(`/movie/now_playing?api_key=${VITE_API_KEY}&${include_adult}&${language}`)
 }
 
 export const getMovie = (movieId: number) => {
     return get<MovieResponse>(`/movie/${movieId}?api_key=${VITE_API_KEY}`)
+}
+
+export const getMovieCast = (movieId: number) => {
+    return get<MovieCastResponse>(`/movie/${movieId}/credits?api_key=5e04b3ee8de9390d9bbaf55b8313b6dd&language=en-US`)
 }
 
