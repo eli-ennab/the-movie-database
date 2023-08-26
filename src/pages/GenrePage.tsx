@@ -4,18 +4,20 @@ import { getMovieGenre } from '../services/TheMovieDB_API'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import MovieCard from '../components/MovieCard'
-// import Pagination from '../components/Pagination'
+import Pagination from '../components/Pagination'
+import { useState } from 'react'
 
 const GenrePage = () => {
+    const [page, setPage] = useState(1)
+
     const { id } = useParams()
     const genreId = Number(id)
-    console.log("genre id", genreId)
 
     const {
         data,
     } = useQuery(
-        ['genre', { genreId: genreId }, { currentPage: 1 }],
-        () => getMovieGenre(genreId, 1),
+        ['genre', { genreId: genreId }, { currentPage: page }],
+        () => getMovieGenre(genreId, page),
     )
     
     if (data === undefined) {
@@ -38,14 +40,14 @@ const GenrePage = () => {
                 </Row>
             )}
 
-            {/* <Pagination
-                page={1}
+            <Pagination
+                page={data.page}
                 totalPages={data.total_pages}
                 hasPreviousPage={data.page > 1}
-                hasNextPage={data.page < 1} 
-                onPreviousPage={} 
-                onNextPage={}
-            /> */}
+                hasNextPage={data.page < data.total_pages}
+                onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
+                onNextPage={() => { setPage(prevValue => prevValue + 1) }}
+			/>
         </>
     )
 }
