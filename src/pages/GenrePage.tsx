@@ -1,17 +1,18 @@
+import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { getMovieGenre } from '../services/TheMovieDB_API'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import MovieCard from '../components/MovieCard'
 import Pagination from '../components/Pagination'
-import { useState } from 'react'
 
 const GenrePage = () => {
-    const [page, setPage] = useState(1)
-
     const { id } = useParams()
     const genreId = Number(id)
+
+    const [searchParams, setSearchParams] = useSearchParams()
+    const page = Number(searchParams.get('page')) || 1
 
     const {
         data,
@@ -20,13 +21,18 @@ const GenrePage = () => {
         () => getMovieGenre(genreId, page),
     )
     
+    useEffect(() => {
+        searchParams.set('page', page.toString())
+        setSearchParams(searchParams)
+    }, [page, searchParams, setSearchParams])
+
     if (data === undefined) {
         return
     }
 
     return (
         <>
-            <h1 className="py-4">Which genre?</h1>
+            <h1 className="py-4"></h1>
 
             <p>Showing {data.results.length} results out of {data.total_results}</p>
 
@@ -45,8 +51,8 @@ const GenrePage = () => {
                 totalPages={data.total_pages}
                 hasPreviousPage={data.page > 1}
                 hasNextPage={data.page < data.total_pages}
-                onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
-                onNextPage={() => { setPage(prevValue => prevValue + 1) }}
+                onPreviousPage={() => { setSearchParams( { page: (Number(page) - 1).toString() }) }}
+                onNextPage={() => { setSearchParams( { page: (Number(page) + 1).toString() }) }}
 			/>
         </>
     )
