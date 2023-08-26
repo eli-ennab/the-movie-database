@@ -17,36 +17,12 @@ export type MovieResponse = {
     overview: string
     popularity: number
     poster_path: string
-    production_companies: [
-        {
-            id: number
-            logo_path: string
-            name: string
-            origin_country: string
-        },
-        {
-            id: number
-            logo_path: string
-            name: string
-            origin_country: string
-        }
-    ],
-    production_countries: [
-        {
-            iso_3166_1: string
-            name: string
-        }
-    ],
+    production_companies: ProductionCompany[]
+    production_countries: ProductionCountry[]
     release_date: Date
     revenue: number
     runtime: number
-    spoken_languages: [
-        {
-            english_name: string
-            iso_639_1: string
-            name: string
-        }
-    ],
+    spoken_languages: SpokenLanguage[]
     status: string
     tagline: string
     title: string
@@ -57,5 +33,23 @@ export type MovieResponse = {
 
 export type Genre = {
     id: number
+    name: string
+}
+
+export type ProductionCompany = {
+    id: number
+    logo_path: string
+    name: string
+    origin_country: string 
+}
+
+export type ProductionCountry = {
+    iso_3166_1: string
+    name: string
+}
+
+export type SpokenLanguage = {
+    english_name: string
+    iso_639_1: string
     name: string
 }
