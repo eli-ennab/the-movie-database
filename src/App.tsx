@@ -1,5 +1,6 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Route, Routes } from 'react-router-dom'
+import ActorPage from './pages/ActorPage'
 import HomePage from './pages/HomePage'
 import GenrePage from './pages/GenrePage'
 import GenresPage from './pages/GenresPage'
@@ -21,6 +22,7 @@ const App = () => {
                         <Route path="/genres" element={<GenresPage />} />
                         <Route path="/genres/:id" element={<GenrePage />} />
                         <Route path="/movies/:id" element={<MoviePage />} />
+                        <Route path="/movies/:id/actors/:id" element={<ActorPage />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
                 </Container>

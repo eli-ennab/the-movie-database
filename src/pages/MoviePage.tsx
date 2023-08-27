@@ -3,7 +3,7 @@ import { getMovie, getMovieCast } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const MoviePage = () => {
     const { id } = useParams()
@@ -18,15 +18,15 @@ const MoviePage = () => {
     )
 
     const getCast = useQuery(
-        ['cast', { movieId: movieId } ],
+        ['movie', 'actors', { movieId: movieId } ],
         () => getMovieCast(movieId),
     )
     
     if (data === undefined) {
         return
     }
-    console.log(data.overview)
-    console.log(getCast.data?.cast)
+
+    const actors = getCast.data?.cast.filter(actors => actors.known_for_department === "Acting")
 
     return (
         <>
@@ -41,27 +41,27 @@ const MoviePage = () => {
                             <ListGroup.Item>Popularity: {data.popularity}</ListGroup.Item>
                         </ListGroup>
                         <hr></hr>
-                        <h2>Cast</h2>
+                        <h2>Actors</h2>
                         { getCast.data && (
                             <ListGroup>
-                                {getCast.data.cast.map (cast => (
+                                {actors?.map (actor => (
                                     <ListGroup.Item
-                                        key={cast.id}
-                                        // action
-                                        // as={Link}
-                                        // to={`/`}
+                                        key={actor.id}
+                                        action
+                                        as={Link}
+                                        to={`/movies/${movieId}/actors/${actor.id}`}
                                     > 
-                                        {cast.name} - {cast.known_for_department}
+                                        {actor.name}
                                     </ListGroup.Item>
                                 ))}
                             </ListGroup>
                         )} 
-                            {/* <Card.Link href="#">Actor 1</Card.Link>
-                            <Card.Link href="#">Actor 2</Card.Link>
+
                         <hr></hr>
+                        
                         <h3>If you like this movie, you might like...</h3>
                             <Card.Link href="#">Movie 1</Card.Link>
-                            <Card.Link href="#">Movie 2</Card.Link> */}
+                            <Card.Link href="#">Movie 2</Card.Link>
                     </Card.Body>
             </Card>
         </>
