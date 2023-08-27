@@ -14,7 +14,7 @@ const MovieCard: React.FC<IProps> = ({ poster_path, title, id }) => {
 
     const redirectToMovie = (id: number) => {
         navigate(`/movies/${id}`, { replace: true })
-      }
+    }
 
     return (
         <Card>
