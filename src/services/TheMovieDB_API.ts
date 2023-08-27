@@ -12,7 +12,7 @@ import axios from 'axios'
 import { MovieGenresResponse } from '../types/MovieGenres.types'
 import { MovieListResponse } from '../types/MovieGenre.types'
 import { MovieResponse } from '../types/Movie.types'
-import { MovieCastResponse } from '../types/MovieCast.types'
+import { Actor, MovieCastResponse } from '../types/MovieCast.types'
 
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
@@ -60,6 +60,10 @@ export const getMovie = (movieId: number) => {
 }
 
 export const getMovieCast = (movieId: number) => {
-    return get<MovieCastResponse>(`/movie/${movieId}/credits?api_key=5e04b3ee8de9390d9bbaf55b8313b6dd&language=en-US`)
+    return get<MovieCastResponse>(`/movie/${movieId}/credits?api_key=${VITE_API_KEY}&${language}`)
 }
 
+export const getActor = (actorId: number) => {
+    return get<Actor>(`/person/${actorId}?api_key=${VITE_API_KEY}&${language}`)
+    // https://api.themoviedb.org/3/person/22?api_key=5e04b3ee8de9390d9bbaf55b8313b6dd&language=en-US
+}
