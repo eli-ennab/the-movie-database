@@ -23,7 +23,7 @@ const MovieCard: React.FC<IProps> = ({ poster_path, title, id }) => {
                 <Card.Title>{title}</Card.Title>
                 <div className="d-grid gap-2">
                     <Button
-                        variant="dark"
+                        variant="light"
                         onClick={() => redirectToMovie(id)}
                     >
                             Read more

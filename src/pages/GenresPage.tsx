@@ -6,8 +6,8 @@ import ListGroup from 'react-bootstrap/ListGroup'
 const GenresPage = () => {
 
     const getGenres = useQuery({
-        queryFn: getMovieGenres,
-        queryKey: ['genres']
+        queryKey: ['genres'],
+        queryFn: getMovieGenres
     })
 
     return (

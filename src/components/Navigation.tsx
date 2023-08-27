@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const Navigation = () => {
 	return (
-        <Navbar bg="dark" data-bs-theme="dark" expand="md">
+        <Navbar data-bs-theme="dark" expand="md">
             <Container>
                 <Navbar.Brand as={Link} to="/" className="h1">
                     The Movie DB
