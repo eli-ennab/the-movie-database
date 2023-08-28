@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMovie, getMovieCast } from '../services/TheMovieDB_API'
+import { getMovie } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -16,17 +16,12 @@ const MoviePage = () => {
         ['movie', { movieId: movieId }],
         () => getMovie(movieId),
     )
-
-    const getCast = useQuery(
-        ['movie', 'actors', { movieId: movieId } ],
-        () => getMovieCast(movieId),
-    )
     
     if (data === undefined) {
         return
     }
 
-    const actors = getCast.data?.cast.filter(actors => actors.known_for_department === "Acting")
+    const actors = data.credits.cast.filter(actors => actors.known_for_department === "Acting")
 
     return (
         <>
@@ -42,7 +37,7 @@ const MoviePage = () => {
                         </ListGroup>
                         <hr></hr>
                         <h2>Actors</h2>
-                        { getCast.data && (
+                        { data.credits.cast && (
                             <ListGroup>
                                 {actors?.map (actor => (
                                     <ListGroup.Item

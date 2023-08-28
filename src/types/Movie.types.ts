@@ -8,7 +8,7 @@ export type MovieResponse = {
         backdrop_path: string
     }
     budget: number
-    genres: Genre[]
+    genres: MovieGenre[]
     homepage: string
     id: number
     imdb_id: string
@@ -29,9 +29,27 @@ export type MovieResponse = {
     video: boolean
     vote_average: number
     vote_count: number
+    credits: {
+        cast: Cast[]
+    }
 }
 
-export type Genre = {
+export type Cast = {
+    adult: boolean
+    gender: number
+    id: number
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string
+    cast_id: number
+    character: string
+    credit_id: string
+    order: number
+}
+
+export type MovieGenre = {
     id: number
     name: string
 }

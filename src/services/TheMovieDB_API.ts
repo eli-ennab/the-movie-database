@@ -9,10 +9,7 @@
  */
 
 import axios from 'axios'
-import { MovieGenresResponse } from '../types/MovieGenres.types'
-import { MovieListResponse } from '../types/MovieGenre.types'
-import { MovieResponse } from '../types/Movie.types'
-import { Actor, MovieCastResponse } from '../types/MovieCast.types'
+import { MovieGenresResponse, MovieListResponse, MovieResponse, Actor } from '../types/index.types'
 
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
@@ -56,11 +53,7 @@ export const getNowPlayingMovies = () => {
 }
 
 export const getMovie = (movieId: number) => {
-    return get<MovieResponse>(`/movie/${movieId}?api_key=${VITE_API_KEY}`)
-}
-
-export const getMovieCast = (movieId: number) => {
-    return get<MovieCastResponse>(`/movie/${movieId}/credits?api_key=${VITE_API_KEY}&${language}`)
+    return get<MovieResponse>(`/movie/${movieId}?api_key=${VITE_API_KEY}&append_to_response=credits`)
 }
 
 export const getActor = (actorId: number) => {
