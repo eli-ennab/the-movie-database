@@ -3,7 +3,7 @@ import { getNowPlayingMovies, getMostPopularMovies, getTopRatedMovies } from "..
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
-import MovieCard from '../components/MovieCard'
+import MovieInListCard from '../components/MovieInListCard'
 
 const HomePage = () => {
 
@@ -49,7 +49,7 @@ const HomePage = () => {
 				<Row xs={1} md={3} lg={5} className="g-4">
 					{topRatedMovies.data.results.slice(0, 10).map(movie => (
 						<Col key={movie.id}>
-							<MovieCard 
+							<MovieInListCard 
                                 poster_path={movie.poster_path} 
                                 title={movie.title} 
                                 id={movie.id} 
@@ -67,7 +67,7 @@ const HomePage = () => {
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {nowPlayingMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
-                            <MovieCard 
+                            <MovieInListCard 
                                 poster_path={movie.poster_path} 
                                 title={movie.title} 
                                 id={movie.id} 
@@ -85,7 +85,7 @@ const HomePage = () => {
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {mostPopularMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
-                            <MovieCard 
+                            <MovieInListCard 
                                 poster_path={movie.poster_path} 
                                 title={movie.title} 
                                 id={movie.id} 

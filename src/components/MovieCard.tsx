@@ -1,48 +1,87 @@
-import { useNavigate } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import Image from 'react-bootstrap/Image'
+import ListGroup from 'react-bootstrap/ListGroup'
+import { useParams } from 'react-router-dom'
+import { Cast } from '../types/Movie.types'
+import { Link } from 'react-router-dom'
 
 interface IProps {
-    poster_path: string | null
+    backdrop_path: string
     title: string
-    id: number
-    vote_average: number
     release_date: string
+    vote_average: number
+    overview: string
+    tagline: string
+    original_language: string
+    original_title: string
+    runtime: number
+    popularity: number
+    budget: number
+    cast: Array<Cast>
 }
 
 const MovieCard: React.FC<IProps> = (
-    { 
-        poster_path, 
-        title, 
-        id, 
-        vote_average, 
-        release_date 
+    {
+        backdrop_path,
+        title,
+        release_date,
+        vote_average,
+        overview,
+        tagline,
+        original_language,
+        original_title,
+        runtime,
+        popularity,
+        budget,
+        cast
     }) => {
 
-    const navigate = useNavigate()
     const URL = "https://image.tmdb.org/t/p/w500"
 
-    const redirectToMovie = (id: number) => {
-        navigate(`/movies/${id}`, { replace: true })
-    }
+    const { id } = useParams()
+    const movieId = Number(id)
+
+    const actors = cast.filter(actors => actors.known_for_department === "Acting")
 
     return (
         <Card>
-            <Card.Img variant="top" src={URL + poster_path} />
-                <Card.Body>
-                    <Card.Title className="movie-card-title">{title} ({release_date.slice(0, 4)})</Card.Title>
-                    <Card.Text><span className="vote-average">{vote_average}</span></Card.Text>
-                    <hr></hr>
-                    <div className="d-grid gap-2">
-                        <Button
-                            variant="dark"
-                            onClick={() => redirectToMovie(id)}
-                        >
-                                Read more
-                        </Button>
-                    </div>
+        <Card.Body>
+            <Image src={ URL + backdrop_path } className="mb-4 border-img" fluid />
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>Release date: {release_date}</Card.Text>
+                <Card.Text><span className="vote-average">{vote_average}</span></Card.Text>
+                <Card.Text>{overview}</Card.Text>
+                <Card.Text>Tagline: "{tagline}"</Card.Text>
+                <Card.Text>Original language: {original_language}</Card.Text>
+                <Card.Text>Original title: {original_title}</Card.Text>
+                <Card.Text>Runtime: {runtime} mins</Card.Text>
+                <Card.Text>Popularity: {popularity}</Card.Text>
+                <Card.Text>Budget: {budget}</Card.Text>
+                <hr></hr>
+                <h2 className="mb-4">Actors</h2>
+                { actors && (
+                    <ListGroup className="list-group-sm">
+                        {actors.map (actor => (
+                            <ListGroup.Item
+                                className="list-item sm"
+                                key={actor.id}
+                                action
+                                as={Link}
+                                to={`/movies/${movieId}/actors/${actor.id}`}
+                            > 
+                                {actor.name}
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                )} 
+
+                <hr></hr>
+                
+                <h3 className="h2 mb-4">If you like {title}, you might like..</h3>
+                    <Card.Link href="#">Movie 1</Card.Link>
+                    <Card.Link href="#">Movie 2</Card.Link>
             </Card.Body>
-        </Card>
+    </Card>
     )
 }
 
