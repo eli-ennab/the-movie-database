@@ -8,6 +8,7 @@ h2,
 a {
     font-size: 1.2rem;
     text-transform: uppercase;
+    letter-spacing: 2px;
     margin: 0;
     padding: 0;
 }
@@ -32,6 +33,12 @@ h5,
 h6,
 a,
 p,
-.form-wrapper {
+.form-wrapper,
+.page {
     font-family: 'Karla', sans-serif;
+}
+
+.page {
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
