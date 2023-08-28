@@ -41,7 +41,33 @@ body {
     width: 250px;
 }
 
+.list-group-sm {
+    width: inherit;
+}
+
+.list-item.sm {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+    background-color: black;
+    border: none;
+    padding: 2px;
+    margin: 10px 10px 10px 0px;
+    width: 200px;
+    flex-direction: column;
+}
+
 .list-group-item:first-child,
 .list-group-item:last-child {
     border-radius: 0;
+}
+
+.movie-wrapper {
+    display: flex;
+    width: 100vw;
+}
+
+.border-img {
+    padding: 10px;
+    border: 1px solid white;
 }
