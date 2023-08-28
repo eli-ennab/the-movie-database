@@ -39,7 +39,7 @@ export const getMovieGenres = () => {
 }
 
 export const getMovieGenre = (genreId: number, page = 1) => {
-    return get<MovieListResponse>(`/discover/movie?api_key=${VITE_API_KEY}&${include_adult}&${language}&page=${page}&with_genres=${genreId}`)
+    return get<MovieListResponse>(`/discover/movie?api_key=${VITE_API_KEY}&${include_adult}&${language}&page=${page}&sort_by=popularity.desc&with_genres=${genreId}`)
 }
 
 export const getTopRatedMovies = () => {

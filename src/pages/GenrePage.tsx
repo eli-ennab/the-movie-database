@@ -37,7 +37,7 @@ const GenrePage = () => {
         <>
             <h1 className="h2 py-4">{genreName}</h1>
 
-            <p>Showing {data.results.length} results out of {data.total_results}</p>
+            <p>Showing {data.results.length} results out of {data.total_results} sorted by popularity</p>
 
             { data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
