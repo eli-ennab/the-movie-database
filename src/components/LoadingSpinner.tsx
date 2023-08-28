@@ -7,8 +7,8 @@ const LoadingSpinner = () => {
   return isFetching ? (
         <div className="loading-spinner">
             <Rings
-                height="80"
-                width="80"
+                height="120"
+                width="120"
                 color="#ffffff"
                 radius="6"
                 visible={true}
