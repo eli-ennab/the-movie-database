@@ -9,7 +9,7 @@ const Navigation = () => {
         <Navbar data-bs-theme="dark" expand="md">
             <Container>
                 <Navbar.Brand as={Link} to="/" className="h1">
-                    <img src={logo_2} className="mx-2" height={40} alt="The Movie Database"/>
+                    <img src={logo_2} className="mx-2" height={35} alt="The Movie Database"/>
                     The Movie Database
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
