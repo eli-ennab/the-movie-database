@@ -24,7 +24,15 @@ body {
 	align-items: center;
 }
 
+h1 {
+    // font-family: 'Moirai One', cursive;
+    // font-family: 'Silkscreen', cursive;
+    font-family: 'Bungee Hairline', cursive;
+    font-weight: 500;
+}
+
 h1,
+h2,
 a {
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -32,7 +40,6 @@ a {
     padding: 0;
 }
 
-h1,
 h2,
 h3,
 h4,
@@ -41,5 +48,5 @@ h6,
 button,
 a,
 p {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Karla', sans-serif;
 }

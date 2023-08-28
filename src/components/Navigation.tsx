@@ -2,15 +2,16 @@ import { Link, NavLink } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import logo_2 from '../images/logo_2.png'
 
 const Navigation = () => {
 	return (
         <Navbar data-bs-theme="dark" expand="md">
             <Container>
                 <Navbar.Brand as={Link} to="/" className="h1">
-                    The Movie DB
+                    <img src={logo_2} className="mx-2" height={40} alt="The Movie Database"/>
+                    The Movie Database
                 </Navbar.Brand>
-
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">

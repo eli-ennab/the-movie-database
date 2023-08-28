@@ -19,7 +19,7 @@ const GenresPage = () => {
 
     return (
         <>
-            <h1 className="py-4">All Genres</h1>
+            <h1 className="h2 py-5">All Genres</h1>
 
             { getGenres.data && (
                 <ListGroup>
