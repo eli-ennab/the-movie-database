@@ -15,7 +15,7 @@ const MoviePage = () => {
     } = useQuery(
         ['movie', { movieId: movieId }],
         () => getMovie(movieId),
-        )
+    )
         
     if (data === undefined) {
         return
