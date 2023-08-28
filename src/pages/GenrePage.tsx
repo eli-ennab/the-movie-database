@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { getMovieGenre } from '../services/TheMovieDB_API'
@@ -16,26 +15,16 @@ const GenrePage = () => {
 
     const {
         data,
-        isLoading,
         isError,
         isFetching,
-        isPreviousData,
     } = useQuery({
         queryKey: ['genre', { genreId: genreId }, { currentPage: page }],
         queryFn: () => getMovieGenre(genreId, page),
-        keepPreviousData : true
     })
-    
-    useEffect(() => {
-        searchParams.set('page', page.toString())
-        setSearchParams(searchParams)
-    }, [page, searchParams, setSearchParams])
 
     if (data === undefined) {
         return
     }
-
-    console.log("is previous data:", isPreviousData)
 
     return (
         <>
@@ -45,10 +34,6 @@ const GenrePage = () => {
 
             { isError && (
                 <p>Error</p>
-            )}
-
-            { isLoading && (
-                <p>Loading</p>
             )}
 
             { data.results && (
@@ -70,8 +55,12 @@ const GenrePage = () => {
                 totalPages={data.total_pages}
                 hasPreviousPage={data.page > 1}
                 hasNextPage={data.page < data.total_pages}
-                onPreviousPage={() => { setSearchParams( { page: (Number(page) - 1).toString() }) }}
-                onNextPage={() => { setSearchParams( { page: (Number(page) + 1).toString() }) }}
+                onPreviousPage={ 
+                    () => { setSearchParams({ page: (Number(page) - 1).toString() }) }
+                }
+                onNextPage={ 
+                    () => { setSearchParams({ page: (Number(page) + 1).toString() }) }
+                }
 			/>
         </>
     )
