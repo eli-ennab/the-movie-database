@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { searchMovies } from '../services/TheMovieDB_API'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
+import Pagination from '../components/Pagination'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
@@ -36,6 +37,10 @@ const SearchPage = () => {
         setSearchParams({ query: searchInput })
     }
 
+    if (data === undefined) {
+        return
+    }
+
     if (isError) {
         <IsErrorAlert />
     }
@@ -64,7 +69,7 @@ const SearchPage = () => {
                 </Button>
             </Form>
 
-            { data?.results && (
+            { data.results.length > 0 && (
                 <>
                 <h2 className="mb-4">Showing {data.results.length} out of {data.total_results} results</h2>
 
@@ -81,6 +86,19 @@ const SearchPage = () => {
                         </Col>
                     ))}
                 </Row>
+
+                <Pagination
+                    page={data.page}
+                    totalPages={data.total_pages}
+                    hasPreviousPage={data.page > 1}
+                    hasNextPage={data.page < data.total_pages}
+                    onPreviousPage={ 
+                        () => { setPage(prevValue => prevValue - 1) }
+                    }
+                    onNextPage={ 
+                        () => { setPage(prevValue => prevValue + 1) }
+                    }
+                    />
                 </>
             )} 
         </>
