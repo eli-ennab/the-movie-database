@@ -4,8 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 const HomePage = () => {
 
@@ -58,7 +58,8 @@ const HomePage = () => {
                                 title={movie.title} 
                                 id={movie.id} 
                                 vote_average={movie.vote_average}
-                                release_date={movie.release_date} />
+                                release_date={movie.release_date} 
+                            />
 						</Col>
 					))}
 				</Row>
@@ -78,20 +79,32 @@ const HomePage = () => {
                                 title={movie.title} 
                                 id={movie.id} 
                                 vote_average={movie.vote_average}
-                                release_date={movie.release_date} />
+                                release_date={movie.release_date} 
+                            />
                         </Col>
                     ))}
                 </Row>
             )}
 
-            <h2 className="my-5">
+            <h2 className="my-4">
                 <span className="text-border">
                     Most popular movies
                 </span>
 			</h2>
-            
-                <Button>This week</Button>
-                <Button>This month</Button>
+            <ButtonGroup size="sm">
+                <Button
+                    variant="warning"
+                    className="mb-4"
+                    >
+                        This week
+                </Button>
+                <Button
+                    variant="warning"
+                    className="mb-4"
+                    >
+                        This month
+                </Button>
+            </ButtonGroup>
 
 			{ mostPopularMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
@@ -102,7 +115,8 @@ const HomePage = () => {
                                 title={movie.title} 
                                 id={movie.id} 
                                 vote_average={movie.vote_average}
-                                release_date={movie.release_date} />
+                                release_date={movie.release_date} 
+                            />
                         </Col>
                     ))}
                 </Row>

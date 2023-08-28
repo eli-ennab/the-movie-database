@@ -35,7 +35,7 @@ const GenrePage = () => {
 
     return (
         <>
-            <h1 className="h2 py-4">{genreName}</h1>
+            <h1 className="h2 py-5"><span className="text-border">{genreName}</span></h1>
 
             <p>Showing {data.results.length} results out of {data.total_results} sorted by popularity</p>
 
