@@ -31,13 +31,26 @@ const ActorPage = () => {
     return (
         <>
             <Card>
-                <Card.Img variant="top" src={ URL + data.profile_path } />
+                <Card.Img variant="top" src={ URL + data.profile_path } className="w-25 fluid" />
                         <Card.Title>{data.name}</Card.Title>
                         <Card.Text>{data.biography}</Card.Text>
                         <ListGroup className="list-group-flush">
                             <ListGroup.Item>Birthday: {data.birthday}</ListGroup.Item>
                             <ListGroup.Item>Place of birth: {data.place_of_birth}</ListGroup.Item>
                         </ListGroup>
+                        <hr></hr>
+                        <h2>Casting in:</h2>
+                        { data.movie_credits.cast && (
+                            <ListGroup>
+                                {data.movie_credits.cast.map (movie => (
+                                    <ListGroup.Item
+                                        key={movie.id}
+                                    > 
+                                        {movie.title}
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                        )} 
             </Card>
         </>
     )
