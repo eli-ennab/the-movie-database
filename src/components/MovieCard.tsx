@@ -22,8 +22,8 @@ const MovieCard: React.FC<IProps> = ({ poster_path, title, id, vote_average, rel
         <Card>
             <Card.Img variant="top" src={URL + poster_path} />
             <Card.Body>
-                <Card.Title>{title} ({release_date.slice(0, 4)})</Card.Title>
-                <Card.Text><span className="average-vote">{vote_average}</span></Card.Text>
+                <Card.Title className="movie-card-title">{title} ({release_date.slice(0, 4)})</Card.Title>
+                <Card.Text><span className="vote-average">{vote_average}</span></Card.Text>
                 <hr></hr>
                 <div className="d-grid gap-2">
                     <Button
