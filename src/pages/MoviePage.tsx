@@ -1,27 +1,35 @@
 import { useQuery } from '@tanstack/react-query'
 import { getMovie } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import IsErrorAlert from '../components/IsErrorAlert'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
-import { Link } from 'react-router-dom'
 
 const MoviePage = () => {
     const { id } = useParams()
     const movieId = Number(id)
     const URL = "https://image.tmdb.org/t/p/w500"
-
+    
     const {
         data,
+        isError
     } = useQuery(
         ['movie', { movieId: movieId }],
         () => getMovie(movieId),
-    )
-    
+        )
+        
     if (data === undefined) {
         return
     }
-
+        
     const actors = data.credits.cast.filter(actors => actors.known_for_department === "Acting")
+
+    if (isError) {
+		return (
+            <IsErrorAlert />
+		)
+	}
 
     return (
         <>

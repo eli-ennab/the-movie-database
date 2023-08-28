@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getNowPlayingMovies, getMostPopularMovies, getTopRatedMovies } from "../services/TheMovieDB_API"
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import IsErrorAlert from '../components/IsErrorAlert'
 import MovieCard from '../components/MovieCard'
 
 const HomePage = () => {
@@ -32,6 +33,12 @@ const HomePage = () => {
 	if (nowPlayingMovies.data === undefined) {
         return
     }
+
+    if (topRatedMovies.isError || mostPopularMovies.isError || nowPlayingMovies.isError) {
+		return (
+            <IsErrorAlert />
+		)
+	}
 
 	return (
 		<>

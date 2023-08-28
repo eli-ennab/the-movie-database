@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import { getMovieGenre } from '../services/TheMovieDB_API'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import IsErrorAlert from '../components/IsErrorAlert'
 import MovieCard from '../components/MovieCard'
 import Pagination from '../components/Pagination'
 
@@ -16,7 +17,6 @@ const GenrePage = () => {
     const {
         data,
         isError,
-        isFetching,
     } = useQuery({
         queryKey: ['genre', { genreId: genreId }, { currentPage: page }],
         queryFn: () => getMovieGenre(genreId, page),
@@ -26,15 +26,17 @@ const GenrePage = () => {
         return
     }
 
+    if (isError) {
+		return (
+            <IsErrorAlert />
+		)
+	}
+
     return (
         <>
             <h1 className="py-4">GenreName</h1>
 
             <p>Showing {data.results.length} results out of {data.total_results}</p>
-
-            { isError && (
-                <p>Error</p>
-            )}
 
             { data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
@@ -44,10 +46,6 @@ const GenrePage = () => {
                         </Col>
                     ))}
                 </Row>
-            )}
-
-            { isFetching && (
-                <p>Fetching</p>
             )}
 
             <Pagination

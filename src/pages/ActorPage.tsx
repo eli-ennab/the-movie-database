@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getActor } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
+import IsErrorAlert from '../components/IsErrorAlert'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 
@@ -11,6 +12,7 @@ const ActorPage = () => {
 
     const {
         data,
+        isError
     } = useQuery(
         ['actor', { actorId: actorId }],
         () => getActor(actorId),
@@ -19,6 +21,12 @@ const ActorPage = () => {
     if (data === undefined) {
         return
     }
+
+	if (isError) {
+		return (
+            <IsErrorAlert />
+		)
+	}
 
     return (
         <>
