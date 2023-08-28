@@ -8,8 +8,9 @@ import MovieCard from '../components/MovieCard'
 import Pagination from '../components/Pagination'
 
 const GenrePage = () => {
-    const { id } = useParams()
+    const { id, name } = useParams()
     const genreId = Number(id)
+    const genreName = name
 
     const [searchParams, setSearchParams] = useSearchParams()
     const page = Number(searchParams.get('page')) || 1
@@ -34,7 +35,7 @@ const GenrePage = () => {
 
     return (
         <>
-            <h1 className="h2 py-4">GenreName</h1>
+            <h1 className="h2 py-4">{genreName}</h1>
 
             <p>Showing {data.results.length} results out of {data.total_results}</p>
 
