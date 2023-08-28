@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 interface IProps {
     poster_path: string | null
