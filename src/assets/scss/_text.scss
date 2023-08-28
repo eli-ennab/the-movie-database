@@ -46,3 +46,9 @@ p,
 .movie-title {
     font-style: oblique;
 }
+
+.text-border {
+    padding: 5px;
+    border-top: 1px solid $gold;
+    border-bottom: 1px solid $gold;
+}

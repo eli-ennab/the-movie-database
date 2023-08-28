@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Button from 'react-bootstrap/Button'
 
 const HomePage = () => {
 
@@ -42,8 +44,10 @@ const HomePage = () => {
 
 	return (
 		<>
-			<h2 className="py-5">
-				Top rated movies
+			<h2 className="my-5">
+                <span className="text-border">
+                    Top rated movies
+                </span>
 			</h2>
 			{ topRatedMovies.data.results && (
 				<Row xs={1} md={3} lg={5} className="g-4">
@@ -60,8 +64,10 @@ const HomePage = () => {
 				</Row>
 			)}
 
-			<h2 className="py-5">
-				Now playing
+            <h2 className="my-5">
+                <span className="text-border">
+                    Now playing
+                </span>
 			</h2>
 			{ nowPlayingMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
@@ -78,9 +84,15 @@ const HomePage = () => {
                 </Row>
             )}
 
-			<h2 className="py-5">
-				Most popular movies
+            <h2 className="my-5">
+                <span className="text-border">
+                    Most popular movies
+                </span>
 			</h2>
+            
+                <Button>This week</Button>
+                <Button>This month</Button>
+
 			{ mostPopularMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {mostPopularMovies.data.results.slice(0, 10).map(movie => (

@@ -19,7 +19,7 @@ const GenresPage = () => {
 
     return (
         <>
-            <h1 className="h2 py-5">All Genres</h1>
+            <h1 className="h2 py-5"><span className="text-border">Browse movies by genre</span></h1>
 
             { getGenres.data && (
                 <ListGroup>

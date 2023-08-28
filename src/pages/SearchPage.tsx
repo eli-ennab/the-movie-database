@@ -47,7 +47,7 @@ const SearchPage = () => {
 
     return (
         <>
-            <h1 className="h2 py-5">Search in The Movie Database</h1>
+            <h1 className="h2 py-5"><span className="text-border">Search in The Movie Database</span></h1>
             <Form className="form-wrapper mb-4" onSubmit={handleSubmit}>
                 <Form.Group controlId="searchQuery">
                 <Form.Label>Search for movies</Form.Label>
