@@ -24,3 +24,24 @@ body {
     color: white;
     border-radius: 0;
 }
+
+.list-group {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-item {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border: none;
+    margin: 10px 10px 10px 0px;
+    width: 250px;
+}
+
+.list-group-item:first-child,
+.list-group-item:last-child {
+    border-radius: 0;
+}

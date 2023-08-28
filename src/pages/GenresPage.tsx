@@ -25,6 +25,7 @@ const GenresPage = () => {
                 <ListGroup>
                     {getGenres.data.genres.map (genre => (
                         <ListGroup.Item
+                            className="list-item"
                             key={genre.id}
                             action
                             as={Link}
