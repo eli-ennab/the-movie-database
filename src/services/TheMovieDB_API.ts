@@ -34,6 +34,10 @@ const get = async <T>(endpoint: string) => {
     return res.data
 }
 
+export const searchMovies = (query: string, page = 1) => {
+    return get<MovieListResponse>(`/search/movie?api_key=${VITE_API_KEY}&query=${query}&${include_adult}&${language}&page=${page}`)
+}
+
 export const getMovieGenres = () => {
     return get<MovieGenresResponse>(`/genre/movie/list?language=en&api_key=${VITE_API_KEY}`)
 }
