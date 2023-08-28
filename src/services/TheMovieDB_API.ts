@@ -13,6 +13,7 @@ import { MovieGenresResponse, MovieListResponse, MovieResponse, Actor } from '..
 
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
+const FAKE_DELAY = 1000
 const include_adult = 'include_adult=false'
 const language = 'language=en-US'
 // const VITE_BEARER_ACCESS_TOKEN = import.meta.env.VITE_BEARER_ACCESS_TOKEN
@@ -29,6 +30,7 @@ const instance = axios.create({
 
 const get = async <T>(endpoint: string) => {
     const res = await instance.get<T>(endpoint)
+    !!FAKE_DELAY && await new Promise((r) => setTimeout(r, FAKE_DELAY))
     return res.data
 }
 

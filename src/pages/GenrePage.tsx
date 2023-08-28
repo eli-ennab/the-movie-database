@@ -28,7 +28,7 @@ const GenrePage = () => {
 
     return (
         <>
-            <h1 className="py-4"></h1>
+            <h1 className="py-4">GenreName</h1>
 
             <p>Showing {data.results.length} results out of {data.total_results}</p>
 
