@@ -59,6 +59,5 @@ export const getMovie = (movieId: number) => {
 }
 
 export const getActor = (actorId: number) => {
-    return get<Actor>(`/person/${actorId}?api_key=${VITE_API_KEY}&${language}`)
-    // https://api.themoviedb.org/3/person/22?api_key=5e04b3ee8de9390d9bbaf55b8313b6dd&language=en-US
+    return get<Actor>(`/person/${actorId}?api_key=${VITE_API_KEY}&${language}&append_to_response=movie_credits`)
 }
