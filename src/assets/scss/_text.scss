@@ -1,6 +1,4 @@
 h1 {
-    // font-family: 'Moirai One', cursive;
-    // font-family: 'Silkscreen', cursive;
     font-family: 'Bungee Hairline', cursive;
     font-weight: 500;
 }
@@ -14,12 +12,24 @@ a {
     padding: 0;
 }
 
+h5,
+p.card-text {
+    font-size: .8rem;
+    margin-bottom: 8px;
+}
+
+.average-vote {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    font-weight: 800;
+}
+
 h2,
 h3,
 h4,
 h5,
 h6,
-button,
 a,
 p,
 .form-wrapper {

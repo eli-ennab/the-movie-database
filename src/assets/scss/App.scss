@@ -9,9 +9,17 @@ body {
     background-color: black;
 }
 
-.card {
+.btn {
+    border-radius: 0;
     background-color: black;
     color: white;
-    border: none;
+    text-transform: uppercase;
+    font-family: 'Karla', sans-serif;
+}
+
+.card,
+.card-img-top {
+    background-color: black;
+    color: white;
     border-radius: 0;
 }

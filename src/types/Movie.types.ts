@@ -19,7 +19,7 @@ export type MovieResponse = {
     poster_path: string
     production_companies: ProductionCompany[]
     production_countries: ProductionCountry[]
-    release_date: Date
+    release_date: string
     revenue: number
     runtime: number
     spoken_languages: SpokenLanguage[]
