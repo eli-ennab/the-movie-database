@@ -4,6 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import { useParams } from 'react-router-dom'
 import { Cast } from '../types/Movie.types'
 import { Link } from 'react-router-dom'
+import { MovieResult } from '../types/MovieList.types'
 
 interface IProps {
     backdrop_path: string
@@ -18,6 +19,7 @@ interface IProps {
     popularity: number
     budget: number
     cast: Array<Cast>
+    recommendations: Array<MovieResult>
 }
 
 const MovieCard: React.FC<IProps> = (
@@ -33,7 +35,8 @@ const MovieCard: React.FC<IProps> = (
         runtime,
         popularity,
         budget,
-        cast
+        cast,
+        recommendations
     }) => {
 
     const URL = "https://image.tmdb.org/t/p/w500"
@@ -77,9 +80,22 @@ const MovieCard: React.FC<IProps> = (
 
                 <hr></hr>
                 
-                <h3 className="h2 mb-4">If you like {title}, you might like..</h3>
-                    <Card.Link href="#">Movie 1</Card.Link>
-                    <Card.Link href="#">Movie 2</Card.Link>
+                <h3 className="h2 mb-4">If you like <span className="movie-title">{title}</span>, you might also like..</h3>
+                { recommendations && (
+                    <ListGroup className="list-group-sm">
+                        {recommendations.map (movie => (
+                            <ListGroup.Item
+                                className="list-item sm"
+                                key={movie.id}
+                                action
+                                as={Link}
+                                to={`/movies/${movie.id}`}
+                            > 
+                                {movie.title}
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                )} 
             </Card.Body>
     </Card>
     )

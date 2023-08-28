@@ -58,6 +58,11 @@ export const getNowPlayingMovies = () => {
     return get<MovieListResponse>(`/movie/now_playing?api_key=${VITE_API_KEY}&${include_adult}&${language}`)
 }
 
+export const getRecommendedMovies = (movieId: number, page = 1) => {
+    return get<MovieListResponse>(`/movie/${movieId}/recommendations?api_key=${VITE_API_KEY}&${include_adult}&${language}&page=${page}`)
+    // https://api.themoviedb.org/3/movie/2/recommendations?api_key=5e04b3ee8de9390d9bbaf55b8313b6dd&language=en-US&page=1
+}
+
 export const getMovie = (movieId: number) => {
     return get<MovieResponse>(`/movie/${movieId}?api_key=${VITE_API_KEY}&append_to_response=credits`)
 }

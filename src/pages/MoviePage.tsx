@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMovie } from '../services/TheMovieDB_API'
+import { getMovie, getRecommendedMovies } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
 import IsErrorAlert from '../components/IsErrorAlert'
 
@@ -16,8 +16,17 @@ const MoviePage = () => {
         ['movie', { movieId: movieId }],
         () => getMovie(movieId),
     )
+
+    const getRecommendations = useQuery(
+        ['recommendations-for-movie', { movieId: movieId }],
+        () => getRecommendedMovies(movieId),
+    )
         
     if (data === undefined) {
+        return
+    }
+
+    if (getRecommendations.data === undefined) {
         return
     }
 
@@ -42,6 +51,7 @@ const MoviePage = () => {
                 popularity={data.popularity} 
                 budget={data.budget} 
                 cast={data.credits.cast}
+                recommendations={getRecommendations.data?.results}
             />
         </>
     )
