@@ -6,6 +6,7 @@ import GenrePage from './pages/GenrePage'
 import GenresPage from './pages/GenresPage'
 import MoviePage from './pages/MoviePage'
 import PageNotFound from './pages/PageNotFound'
+import SearchPage from './pages/SearchPage'
 import LoadingSpinner from './components/LoadingSpinner'
 import Navigation from './components/Navigation'
 import Container from 'react-bootstrap/Container'
@@ -21,6 +22,7 @@ const App = () => {
                 <Container>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/search" element={<SearchPage />} />
                         <Route path="/genres" element={<GenresPage />} />
                         <Route path="/genres/:id" element={<GenrePage />} />
                         <Route path="/movies/:id" element={<MoviePage />} />
