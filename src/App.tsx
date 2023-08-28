@@ -6,6 +6,7 @@ import GenrePage from './pages/GenrePage'
 import GenresPage from './pages/GenresPage'
 import MoviePage from './pages/MoviePage'
 import PageNotFound from './pages/PageNotFound'
+import LoadingSpinner from './components/LoadingSpinner'
 import Navigation from './components/Navigation'
 import Container from 'react-bootstrap/Container'
 
@@ -15,6 +16,7 @@ const App = () => {
     return (
             <>
                 <Navigation />
+                <LoadingSpinner />
 
                 <Container>
                     <Routes>
