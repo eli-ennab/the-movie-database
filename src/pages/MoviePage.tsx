@@ -34,7 +34,7 @@ const MoviePage = () => {
     return (
         <>
             <Card>
-                <Card.Img variant="top" src={ URL + data.backdrop_path } />
+                <Card.Img variant="top" src={ URL + data.backdrop_path } className="w-25 fluid" />
                     <Card.Body>
                         <Card.Title>{data.title}</Card.Title>
                         <Card.Text>{data.overview}</Card.Text>
