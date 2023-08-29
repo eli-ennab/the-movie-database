@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getMostPopularMovies } from "../services/TheMovieDB_API"
+import { getTrendingMovies } from "../services/TheMovieDB_API"
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
@@ -10,18 +11,21 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 
 const HomePage = () => {
+    const [timeWindow, setTimeWindow] = useState<string>('day')
 
     const topRatedMovies = useTopRatedMovies()
 
-    // TO DO: get most popular movies both for this week and this month 
-	const mostPopularMovies = useQuery(
-        ['mostPopularMovies'],
-        getMostPopularMovies,
+    const nowPlayingMovies = useNowPlayingMovies()
+
+	const trendingMovies = useQuery(
+        ['trendingMoviesToday', { timeWindow: timeWindow }],
+        () => getTrendingMovies(timeWindow),
     )
 
-	const nowPlayingMovies = useNowPlayingMovies()
+    useEffect(() => {
+    }, [timeWindow])
 
-    if (topRatedMovies.isError || mostPopularMovies.isError || nowPlayingMovies.isError) {
+    if (topRatedMovies.isError || nowPlayingMovies.isError) {
 		return (
             <IsErrorAlert />
 		)
@@ -31,7 +35,7 @@ const HomePage = () => {
 		<>
 			<h2 className="my-5">
                 <span className="text-border">
-                    Top rated movies
+                    Top rated
                 </span>
 			</h2>
 			{ topRatedMovies.data && topRatedMovies.data.results && (
@@ -73,27 +77,29 @@ const HomePage = () => {
 
             <h2 className="my-5">
                 <span className="text-border">
-                    Most popular movies
+                    Treding
                 </span>
 			</h2>
             <ButtonGroup size="sm">
                 <Button
                     variant="warning"
-                    className="mb-4"
+                    className={`mb-4 ${timeWindow === 'day' ? 'active-button' : ''}`}
+                    onClick={() => setTimeWindow('day')}
                     >
                         This day
                 </Button>
                 <Button
                     variant="warning"
-                    className="mb-4"
+                    className={`mb-4 ${timeWindow === 'week' ? 'active-button' : ''}`}
+                    onClick={() => setTimeWindow('week')}
                     >
                         This week
                 </Button>
             </ButtonGroup>
 
-			{ mostPopularMovies.data && mostPopularMovies.data.results && (
+			{ trendingMovies.data && trendingMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
-                    {mostPopularMovies.data.results.slice(0, 10).map(movie => (
+                    {trendingMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
                             <MovieInListCard 
                                 poster_path={movie.poster_path} 
