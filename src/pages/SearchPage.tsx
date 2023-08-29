@@ -19,7 +19,7 @@ const SearchPage = () => {
 
     const {
         data,
-        isError
+        isError,
     } = useQuery(
         ['search-movie-db', { query: query }, { page: Number(page) }],
         () => searchMovies(query, Number(page))
@@ -63,8 +63,8 @@ const SearchPage = () => {
                 </Button>
             </Form>
 
-            { query === '' && (
-                <p>Results will show once you enter your query.</p>
+            { query.length > 0 && data?.total_results === 0 && (
+                <p>'{query}' does not exist in the database.</p>
             )}
 
             { data && data.results.length > 0 && (
