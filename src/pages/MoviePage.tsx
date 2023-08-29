@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
-import { getMovie, getRecommendedMovies } from '../services/TheMovieDB_API'
 import { useParams } from 'react-router-dom'
 import IsErrorAlert from '../components/IsErrorAlert'
 
 import MovieCard from '../components/MovieCard'
+import useMovie from '../hooks/useMovie'
+import useRecommendations from '../hooks/useRecommendations'
 
 const MoviePage = () => {    
     const { id } = useParams()
@@ -12,15 +12,9 @@ const MoviePage = () => {
     const {
         data,
         isError
-    } = useQuery(
-        ['movie', { movieId: movieId }],
-        () => getMovie(movieId),
-    )
+    } = useMovie(movieId)
 
-    const getRecommendations = useQuery(
-        ['recommendationsForMovie', { movieId: movieId }],
-        () => getRecommendedMovies(movieId),
-    )
+    const getRecommendations = useRecommendations(movieId)
         
     if (data === undefined) {
         return
