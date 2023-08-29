@@ -1,11 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
 import { useParams, useSearchParams } from 'react-router-dom'
-import { getMovieGenre } from '../services/TheMovieDB_API'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
 import Pagination from '../components/Pagination'
+import useGenre from '../hooks/useGenre'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 const GenrePage = () => {
     const { id, name } = useParams()
@@ -18,10 +17,7 @@ const GenrePage = () => {
     const {
         data,
         isError,
-    } = useQuery({
-        queryKey: ['genre', { genreId: genreId }, { currentPage: page }],
-        queryFn: () => getMovieGenre(genreId, page),
-    })
+    } = useGenre(genreId, page)
 
     if (data === undefined) {
         return
