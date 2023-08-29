@@ -1,21 +1,20 @@
 import { useIsFetching } from "@tanstack/react-query"
-import { Rings } from 'react-loader-spinner'
 
 const LoadingSpinner = () => {
-  const isFetching = useIsFetching()
+    const isFetching = useIsFetching()
 
-  return isFetching ? (
-        <div className="loading-spinner">
-            <Rings
-                height="120"
-                width="120"
-                color="#ffffff"
-                radius="6"
-                visible={true}
-                ariaLabel="rings-loading"
-            />
+    return isFetching ? (
+        <div className="spinner-wrapper">
+            <div className="spinner">
+                    <div className="sk-folding-cube">
+                    <div className="sk-cube1 sk-cube"></div>
+                    <div className="sk-cube2 sk-cube"></div>
+                    <div className="sk-cube4 sk-cube"></div>
+                    <div className="sk-cube3 sk-cube"></div>
+                </div>
+            </div>
         </div>
-  ) : null
+    ) : null
 }
 
 export default LoadingSpinner

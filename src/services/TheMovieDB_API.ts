@@ -13,7 +13,7 @@ import { MovieGenresResponse, MovieListResponse, MovieResponse, Actor } from '..
 
 const VITE_API_KEY = import.meta.env.VITE_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
-const FAKE_DELAY = 1000
+const FAKE_DELAY = 2000
 const include_adult = 'include_adult=false'
 const language = 'language=en-US'
 // const VITE_BEARER_ACCESS_TOKEN = import.meta.env.VITE_BEARER_ACCESS_TOKEN
