@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
-import { searchMovies } from '../services/TheMovieDB_API'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
 import Pagination from '../components/Pagination'
@@ -9,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
+import useSearchMovies from '../hooks/useSearchMovies'
 
 const SearchPage = () => {
     const [searchInput, setSearchInput] = useState('')
@@ -20,10 +19,7 @@ const SearchPage = () => {
     const {
         data,
         isError,
-    } = useQuery(
-        ['search-movie-db', { query: query }, { page: Number(page) }],
-        () => searchMovies(query, Number(page))
-    )
+    } = useSearchMovies(query, Number(page))
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
