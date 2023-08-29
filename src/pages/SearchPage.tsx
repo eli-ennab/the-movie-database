@@ -12,17 +12,17 @@ import Row from 'react-bootstrap/Row'
 
 const SearchPage = () => {
     const [searchInput, setSearchInput] = useState('')
-    const [page, setPage] = useState(1)
     const [searchParams, setSearchParams] = useSearchParams()
 
     const query = searchParams.get('query') ?? ''
+    const page = searchParams.get('page') ?? 1
 
     const {
         data,
         isError
     } = useQuery(
-        ['search-movie-db', { query: query }, { currentPage: page }],
-        () => searchMovies(query, page)
+        ['search-movie-db', { query: query }, { page: Number(page) }],
+        () => searchMovies(query, Number(page))
     )
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -32,13 +32,11 @@ const SearchPage = () => {
             return
         }
 
-        setPage(1)
-
-        setSearchParams({ query: searchInput })
+        setSearchParams({ query: searchInput, page: '1' })
     }
 
     if (isError) {
-        <IsErrorAlert />
+        return <IsErrorAlert />
     }
 
     return (
@@ -65,6 +63,10 @@ const SearchPage = () => {
                 </Button>
             </Form>
 
+            { query === '' && (
+                <p>Results will show once you enter your query.</p>
+            )}
+
             { data && data.results.length > 0 && (
                 <>
                 <h2 className="mb-4">Showing {data.results.length} out of {data.total_results} results</h2>
@@ -89,10 +91,10 @@ const SearchPage = () => {
                     hasPreviousPage={data.page > 1}
                     hasNextPage={data.page < data.total_pages}
                     onPreviousPage={ 
-                        () => { setPage(prevValue => prevValue - 1) }
+                        () => { setSearchParams({ query: query, page: (Number(page) - 1).toString() }) }
                     }
                     onNextPage={ 
-                        () => { setPage(prevValue => prevValue + 1) }
+                        () => { setSearchParams({ query: query, page: (Number(page) + 1).toString() }) }
                     }
                     />
                 </>
