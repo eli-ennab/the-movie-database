@@ -21,7 +21,7 @@ const HomePage = () => {
     useEffect(() => {
     }, [timeWindow])
 
-    if (topRatedMovies.isError || nowPlayingMovies.isError) {
+    if (topRatedMovies.isError || nowPlayingMovies.isError || trendingMovies.isError) {
 		return (
             <IsErrorAlert />
 		)
@@ -50,28 +50,8 @@ const HomePage = () => {
 				</Row>
 			)}
 
-            <h2 className="my-5">
-                <span className="text-border">
-                    Now playing
-                </span>
-			</h2>
-			{ nowPlayingMovies.data && nowPlayingMovies.data.results && (
-                <Row xs={1} md={3} lg={5} className="g-4">
-                    {nowPlayingMovies.data.results.slice(0, 10).map(movie => (
-                        <Col key={movie.id}>
-                            <MovieInListCard 
-                                poster_path={movie.poster_path} 
-                                title={movie.title} 
-                                id={movie.id} 
-                                vote_average={movie.vote_average}
-                                release_date={movie.release_date} 
-                            />
-                        </Col>
-                    ))}
-                </Row>
-            )}
 
-            <h2 className="my-5">
+            <h2 className="mt-5 mb-4">
                 <span className="text-border">
                     Trending
                 </span>
@@ -96,6 +76,27 @@ const HomePage = () => {
 			{ trendingMovies.data && trendingMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {trendingMovies.data.results.slice(0, 10).map(movie => (
+                        <Col key={movie.id}>
+                            <MovieInListCard 
+                                poster_path={movie.poster_path} 
+                                title={movie.title} 
+                                id={movie.id} 
+                                vote_average={movie.vote_average}
+                                release_date={movie.release_date} 
+                            />
+                        </Col>
+                    ))}
+                </Row>
+            )}
+
+            <h2 className="my-5">
+                <span className="text-border">
+                    Now playing
+                </span>
+			</h2>
+			{ nowPlayingMovies.data && nowPlayingMovies.data.results && (
+                <Row xs={1} md={3} lg={5} className="g-4">
+                    {nowPlayingMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
                             <MovieInListCard 
                                 poster_path={movie.poster_path} 
