@@ -37,10 +37,6 @@ const SearchPage = () => {
         setSearchParams({ query: searchInput })
     }
 
-    if (data === undefined) {
-        return
-    }
-
     if (isError) {
         <IsErrorAlert />
     }
@@ -69,7 +65,7 @@ const SearchPage = () => {
                 </Button>
             </Form>
 
-            { data.results.length > 0 && (
+            { data && data.results.length > 0 && (
                 <>
                 <h2 className="mb-4">Showing {data.results.length} out of {data.total_results} results</h2>
 

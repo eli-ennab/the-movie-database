@@ -12,10 +12,6 @@ const ActorPage = () => {
         isError
     } = useActor(actorId)
 
-    if (data === undefined) {
-        return
-    }
-
 	if (isError) {
 		return (
             <IsErrorAlert />
@@ -24,16 +20,18 @@ const ActorPage = () => {
 
     return (
         <>
-            <ActorCard 
-                profile_path={data.profile_path} 
-                name={data.name} 
-                popularity={data.popularity} 
-                biography={data.biography} 
-                place_of_birth={data.place_of_birth} 
-                birthday={data.birthday} 
-                deathday={data.deathday}
-                cast={data.movie_credits.cast}                
-            />
+            { data &&
+                <ActorCard 
+                    profile_path={data.profile_path} 
+                    name={data.name} 
+                    popularity={data.popularity} 
+                    biography={data.biography} 
+                    place_of_birth={data.place_of_birth} 
+                    birthday={data.birthday} 
+                    deathday={data.deathday}
+                    cast={data.movie_credits.cast}                
+                />
+            }
         </>
     )
 }

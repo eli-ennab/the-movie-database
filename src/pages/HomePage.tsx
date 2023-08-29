@@ -21,18 +21,6 @@ const HomePage = () => {
 
 	const nowPlayingMovies = useNowPlayingMovies()
 
-	if (topRatedMovies.data === undefined) {
-        return
-    }
-
-	if (mostPopularMovies.data === undefined) {
-        return
-    }
-
-	if (nowPlayingMovies.data === undefined) {
-        return
-    }
-
     if (topRatedMovies.isError || mostPopularMovies.isError || nowPlayingMovies.isError) {
 		return (
             <IsErrorAlert />
@@ -46,7 +34,7 @@ const HomePage = () => {
                     Top rated movies
                 </span>
 			</h2>
-			{ topRatedMovies.data.results && (
+			{ topRatedMovies.data && topRatedMovies.data.results && (
 				<Row xs={1} md={3} lg={5} className="g-4">
 					{topRatedMovies.data.results.slice(0, 10).map(movie => (
 						<Col key={movie.id}>
@@ -67,7 +55,7 @@ const HomePage = () => {
                     Now playing
                 </span>
 			</h2>
-			{ nowPlayingMovies.data.results && (
+			{ nowPlayingMovies.data && nowPlayingMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {nowPlayingMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
@@ -93,17 +81,17 @@ const HomePage = () => {
                     variant="warning"
                     className="mb-4"
                     >
-                        This week
+                        This day
                 </Button>
                 <Button
                     variant="warning"
                     className="mb-4"
                     >
-                        This month
+                        This week
                 </Button>
             </ButtonGroup>
 
-			{ mostPopularMovies.data.results && (
+			{ mostPopularMovies.data && mostPopularMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {mostPopularMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
@@ -118,7 +106,6 @@ const HomePage = () => {
                     ))}
                 </Row>
             )}
-
 		</>
 	)
 }
