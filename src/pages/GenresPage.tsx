@@ -1,15 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
-import { getMovieGenres } from '../services/TheMovieDB_API'
 import { Link } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 import IsErrorAlert from '../components/IsErrorAlert'
+import useGenres from '../hooks/useGenres'
 
 const GenresPage = () => {
 
-    const getGenres = useQuery({
-        queryKey: ['genres'],
-        queryFn: getMovieGenres
-    })
+    const getGenres = useGenres()
 
     if (getGenres.isError) {
 		return (
