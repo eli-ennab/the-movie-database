@@ -1,28 +1,25 @@
 import { useQuery } from '@tanstack/react-query'
-import { getNowPlayingMovies, getMostPopularMovies, getTopRatedMovies } from "../services/TheMovieDB_API"
+import { getMostPopularMovies } from "../services/TheMovieDB_API"
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import useTopRatedMovies from '../hooks/useTopRatedMovies'
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 
 const HomePage = () => {
 
-    const topRatedMovies = useQuery(
-        ['topRatedMovies'],
-        getTopRatedMovies,
-    )
+    const topRatedMovies = useTopRatedMovies()
 
+    // TO DO: get most popular movies both for this week and this month 
 	const mostPopularMovies = useQuery(
         ['mostPopularMovies'],
         getMostPopularMovies,
     )
 
-	const nowPlayingMovies = useQuery(
-        ['latestMovies'],
-        getNowPlayingMovies,
-    )
+	const nowPlayingMovies = useNowPlayingMovies()
 
 	if (topRatedMovies.data === undefined) {
         return
