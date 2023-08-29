@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { getTrendingMovies } from "../services/TheMovieDB_API"
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import IsErrorAlert from '../components/IsErrorAlert'
@@ -9,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import useTopRatedMovies from '../hooks/useTopRatedMovies'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import useTrendingMovies from '../hooks/useTrendingMovies'
 
 const HomePage = () => {
     const [timeWindow, setTimeWindow] = useState<string>('day')
@@ -17,10 +16,7 @@ const HomePage = () => {
 
     const nowPlayingMovies = useNowPlayingMovies()
 
-	const trendingMovies = useQuery(
-        ['trendingMoviesToday', { timeWindow: timeWindow }],
-        () => getTrendingMovies(timeWindow),
-    )
+	const trendingMovies = useTrendingMovies(timeWindow)
 
     useEffect(() => {
     }, [timeWindow])
@@ -77,7 +73,7 @@ const HomePage = () => {
 
             <h2 className="my-5">
                 <span className="text-border">
-                    Treding
+                    Trending
                 </span>
 			</h2>
             <ButtonGroup size="sm">
