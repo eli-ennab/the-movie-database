@@ -1,0 +1,35 @@
+.list-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-item {
+    display: flex;
+    justify-content: flex-start;
+    background-color: black;
+    border: none;
+    margin: 10px 10px 10px 0px;
+    width: 250px;
+}
+
+.list-group-sm {
+    width: inherit;
+}
+
+.list-item.sm {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+    background-color: black;
+    border: none;
+    padding: 2px;
+    margin: 10px 10px 10px 0px;
+    width: 200px;
+    flex-direction: column;
+}
+
+.list-group-item:first-child,
+.list-group-item:last-child {
+    border-radius: 0;
+}
