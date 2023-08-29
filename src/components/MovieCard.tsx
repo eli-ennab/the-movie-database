@@ -47,7 +47,7 @@ const MovieCard: React.FC<IProps> = (
     const actors = cast.filter(actors => actors.known_for_department === "Acting")
 
     return (
-        <Card>
+        <Card className="movie-card">
         <Card.Body>
             <Image src={ URL + backdrop_path } className="mb-4 border-img" fluid />
                 <Card.Title>{title}</Card.Title>
