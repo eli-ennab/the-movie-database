@@ -18,7 +18,7 @@ const MoviePage = () => {
     )
 
     const getRecommendations = useQuery(
-        ['recommendations-for-movie', { movieId: movieId }],
+        ['recommendationsForMovie', { movieId: movieId }],
         () => getRecommendedMovies(movieId),
     )
         
