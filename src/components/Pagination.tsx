@@ -10,14 +10,16 @@ interface IPaginationProps {
 	onNextPage: () => void
 }
 
-const Pagination: React.FC<IPaginationProps> = ({
-	page,
-	totalPages,
-	hasPreviousPage,
-	hasNextPage,
-	onPreviousPage,
-	onNextPage,
-}) => {
+const Pagination: React.FC<IPaginationProps> = (
+	{
+		page,
+		totalPages,
+		hasPreviousPage,
+		hasNextPage,
+		onPreviousPage,
+		onNextPage,
+	}) => {
+
 	return (
 		<div className="pagination-wrapper d-flex justify-content-between align-items-center">
 			<div className="prev">
