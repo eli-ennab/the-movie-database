@@ -17,9 +17,7 @@ const MoviePage = () => {
     const getRecommendations = useRecommendations(movieId)
 
     if (isError) {
-		return (
-            <IsErrorAlert />
-		)
+		return <IsErrorAlert />
 	}
 
     return (

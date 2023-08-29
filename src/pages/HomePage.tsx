@@ -22,9 +22,7 @@ const HomePage = () => {
     }, [timeWindow])
 
     if (topRatedMovies.isError || nowPlayingMovies.isError || trendingMovies.isError) {
-		return (
-            <IsErrorAlert />
-		)
+		return <IsErrorAlert />
 	}
 
 	return (

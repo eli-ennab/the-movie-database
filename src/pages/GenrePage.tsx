@@ -20,9 +20,7 @@ const GenrePage = () => {
     } = useGenre(genreId, page)
 
     if (isError) {
-		return (
-            <IsErrorAlert />
-		)
+		return <IsErrorAlert />
 	}
 
     return (

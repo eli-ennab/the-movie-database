@@ -8,9 +8,7 @@ const GenresPage = () => {
     const getGenres = useGenres()
 
     if (getGenres.isError) {
-		return (
-            <IsErrorAlert />
-		)
+		return <IsErrorAlert />
 	}
 
     return (
