@@ -86,7 +86,7 @@ const HomePage = () => {
                 </Row>
             )}
 
-            <h2 className="my-4">
+            <h2 className="my-5">
                 <span className="text-border">
                     Most popular movies
                 </span>
