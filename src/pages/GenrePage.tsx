@@ -29,7 +29,7 @@ const GenrePage = () => {
 
             { data && data.results && (
                 <>
-                    <p>Showing {data.results.length} results out of {data.total_results} sorted by popularity</p>
+                    <p>{data.total_results.toLocaleString()} results for {genreName}</p>
 
                     <Row xs={1} md={3} lg={5} className="g-4">
                         {data.results.map(movie => (
