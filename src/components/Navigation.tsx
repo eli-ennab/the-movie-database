@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { FaGithub } from 'react-icons/fa'
 import logo_white from '../images/logo_white.png'
 
 const Navigation = () => {
@@ -15,6 +16,9 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
+                        <Nav.Link as={Link} to="https://github.com/eli-ennab" target="_blank" className="px-2">
+                            <FaGithub />
+                        </Nav.Link>
                         <Nav.Link as={NavLink} end to="/genres">
                             Browse movies by genre
                         </Nav.Link>
