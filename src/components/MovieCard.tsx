@@ -54,17 +54,17 @@ const MovieCard: React.FC<IProps> = (
     return (
         <Card className="movie-card">
         <Card.Body>
-            <Image src={ URL + backdrop_path } className="mb-4 border-img" fluid />
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>Release date: {release_date}</Card.Text>
-                <Card.Text><span className="vote-average">{vote_average}</span></Card.Text>
+            <Image src={ URL + backdrop_path} className="mb-4 border-img" fluid />
+                <Card.Title>{title || 'N/A'}</Card.Title>
+                <Card.Text>Release date: {release_date || 'N/A'}</Card.Text>
+                <Card.Text><span className="vote-average">{vote_average || 'N/A'}</span></Card.Text>
                 <Card.Text>{overview}</Card.Text>
-                <Card.Text>Tagline: "{tagline}"</Card.Text>
-                <Card.Text>Original language: {original_language}</Card.Text>
-                <Card.Text>Original title: {original_title}</Card.Text>
-                <Card.Text>Runtime: {runtime} mins</Card.Text>
-                <Card.Text>Popularity: {popularity}</Card.Text>
-                <Card.Text>Budget: {USDollar.format(budget)}</Card.Text>
+                <Card.Text>Tagline: {tagline || 'N/A'}</Card.Text>
+                <Card.Text>Original language: {original_language || 'N/A'}</Card.Text>
+                <Card.Text>Original title: {original_title || 'N/A'}</Card.Text>
+                <Card.Text>Runtime: {runtime || 'N/A'} mins</Card.Text>
+                <Card.Text>Popularity: {popularity || 'N/A'}</Card.Text>
+                <Card.Text>Budget: {USDollar.format(budget) || 'N/A'}</Card.Text>
                 <hr></hr>
                 <h2 className="mb-4">Actors</h2>
                 { actors && (
@@ -96,7 +96,7 @@ const MovieCard: React.FC<IProps> = (
                                 as={Link}
                                 to={`/movies/${movie.id}`}
                             > 
-                                {movie.title}
+                                {movie.title || 'N/A'}
                             </ListGroup.Item>
                         ))}
                     </ListGroup>

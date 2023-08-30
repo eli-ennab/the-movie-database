@@ -34,11 +34,11 @@ const ActorCard: React.FC<IProps> = (
             <Card.Body>
                 <Image src={ URL + profile_path } className="w-25 border-img mb-4" fluid />
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>Popularity: {popularity}</Card.Text>
-                    <Card.Text>{biography}</Card.Text>
-                    <Card.Text>Birthplace: {place_of_birth}</Card.Text>
-                    <Card.Text>Birthday: {birthday}</Card.Text>
-                    <Card.Text>Deathday: {deathday}</Card.Text>
+                    <Card.Text>Popularity: {popularity || 'N/A'}</Card.Text>
+                    <Card.Text>Biography: {biography || 'N/A'}</Card.Text>
+                    <Card.Text>Birthplace: {place_of_birth || 'N/A'}</Card.Text>
+                    <Card.Text>Birthday: {birthday || 'N/A'}</Card.Text>
+                    <Card.Text>Deathday: {deathday || 'N/A'}</Card.Text>
                     <hr></hr>
                     <h2 className="mb-4">Movies</h2>
                     { cast && (
