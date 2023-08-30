@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import na_image from './../../public/na_image.png'
+import na_image from '../images/na_image.png'
 
 interface IProps {
     poster_path: string | null

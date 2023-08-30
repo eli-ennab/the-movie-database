@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Cast } from '../types/Movie.types'
 import { Link } from 'react-router-dom'
 import { MovieResult } from '../types/MovieList.types'
-import na_image from './../../public/na_image.png'
+import na_image from '../images/na_image.png'
 
 interface IProps {
     backdrop_path: string

@@ -3,7 +3,7 @@ import { ActorCast } from '../types/Actor.types'
 import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 import ListGroup from 'react-bootstrap/ListGroup'
-import na_image from './../../public/na_image.png'
+import na_image from '../images/na_image.png'
 
 interface IProps {
     profile_path: string

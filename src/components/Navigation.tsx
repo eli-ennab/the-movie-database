@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { FaGithub } from 'react-icons/fa'
-import logo_white from './../../public/logo_white.png'
+import logo_white from '../images/logo_white.png'
 
 const Navigation = () => {
 	return (
