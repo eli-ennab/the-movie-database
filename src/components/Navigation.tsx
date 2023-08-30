@@ -16,7 +16,7 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link as={Link} to="https://github.com/eli-ennab" target="_blank" className="px-2">
+                        <Nav.Link as={Link} to="https://github.com/eli-ennab" title="da creator's github account" target="_blank" className="px-2">
                             <FaGithub />
                         </Nav.Link>
                         <Nav.Link as={NavLink} end to="/genres">
