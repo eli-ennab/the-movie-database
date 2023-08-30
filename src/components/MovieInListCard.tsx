@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import na_image from './../../public/na_image.png'
 
 interface IProps {
     poster_path: string | null
@@ -28,7 +29,7 @@ const MovieInListCard: React.FC<IProps> = (
 
     return (
         <Card>
-            <Card.Img variant="top" src={URL + poster_path} />
+            <Card.Img variant="top" src={poster_path ? URL + poster_path : na_image} />
                 <Card.Body>
                     <Card.Title className="movie-card-title">{title} ({release_date.slice(0, 4)})</Card.Title>
                     <Card.Text><span className="vote-average">{vote_average}</span></Card.Text>

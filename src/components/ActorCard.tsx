@@ -3,6 +3,7 @@ import { ActorCast } from '../types/Actor.types'
 import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 import ListGroup from 'react-bootstrap/ListGroup'
+import na_image from './../../public/na_image.png'
 
 interface IProps {
     profile_path: string
@@ -32,7 +33,7 @@ const ActorCard: React.FC<IProps> = (
     return (
         <Card>
             <Card.Body>
-                <Image src={ URL + profile_path } className="w-25 border-img mb-4" fluid />
+                <Image src={profile_path ? URL + profile_path : na_image} className="w-25 border-img mb-4" fluid />
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>Popularity: {popularity || 'N/A'}</Card.Text>
                     <Card.Text>Biography: {biography || 'N/A'}</Card.Text>
