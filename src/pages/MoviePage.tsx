@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import IsErrorAlert from '../components/IsErrorAlert'
-
 import MovieCard from '../components/MovieCard'
 import useMovie from '../hooks/useMovie'
 import useRecommendations from '../hooks/useRecommendations'
@@ -8,13 +7,28 @@ import useRecommendations from '../hooks/useRecommendations'
 const MoviePage = () => {    
     const { id } = useParams()
     const movieId = Number(id)
+    const getRecommendations = useRecommendations(movieId)
 
     const {
         data,
         isError
     } = useMovie(movieId)
 
-    const getRecommendations = useRecommendations(movieId)
+    if (data) {
+        const key = `movie_${movieId}`
+        localStorage.setItem(key, JSON.stringify(data))
+    
+        const storedValue = localStorage.getItem(key)
+        const latestValue = storedValue ? JSON.parse(storedValue) : null
+
+        const storedMovies: number[] = []
+        // console.log("stored value", storedValue)
+        // console.log("latest value", latestValue)
+
+        storedMovies.push(latestValue)
+        const tenLastMovies = storedMovies.slice(-10)
+        console.log("ten last movies", tenLastMovies)
+    }
 
     if (isError) {
 		return <IsErrorAlert />
