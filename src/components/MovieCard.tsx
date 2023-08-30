@@ -56,7 +56,7 @@ const MovieCard: React.FC<IProps> = (
     return (
         <Card className="movie-card">
         <Card.Body>
-            <Image src={backdrop_path ? URL + backdrop_path : na_image} className="mb-4 border-img" fluid />
+            <Image src={backdrop_path ? URL + backdrop_path : na_image} className="w-25 mb-4 border-img" fluid />
                 <Card.Title>{title || 'N/A'}</Card.Title>
                 <Card.Text>Release date: {release_date || 'N/A'}</Card.Text>
                 <Card.Text><span className="vote-average">{vote_average || 'N/A'}</span></Card.Text>
