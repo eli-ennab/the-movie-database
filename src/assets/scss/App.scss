@@ -3,6 +3,7 @@
 @import 'card';
 @import 'config';
 @import 'form';
+@import 'hero';
 @import 'list';
 @import 'loading_spinner';
 @import 'nav';
@@ -11,4 +12,5 @@
 
 body {
     background-color: black;
+    height: 100%;
 }
