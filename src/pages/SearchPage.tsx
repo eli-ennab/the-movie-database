@@ -65,7 +65,7 @@ const SearchPage = () => {
 
             { data && data.results.length > 0 && (
                 <>
-                <h2 className="mb-4">Showing {data.results.length} out of {data.total_results} results</h2>
+                <h2 className="mb-4">{data.total_results} results for '{query}'</h2>
 
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {data.results.map (movie => (
