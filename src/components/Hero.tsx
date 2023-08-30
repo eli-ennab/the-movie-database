@@ -5,18 +5,20 @@ const Hero = () => {
     return (
         <>
             <div className="hero-image">
-            <h2 className="hero-text">
-                Your movie database. 
-                    <a href="#top-rated">
-                        Top Rated
-                    </a>
-                    <a href="#trending">
-                        Trending
-                    </a>
-                    <a href="#now-playing">
-                        Now Playing
-                    </a>
-            </h2>
+            <div className="hero-text">
+                <h2>
+                    Your movie database. 
+                </h2>
+                <a href="#top-rated">
+                    Top Rated
+                </a>
+                <a href="#trending">
+                    Trending
+                </a>
+                <a href="#now-playing">
+                    Now Playing
+                </a>
+            </div>
             <div className="image-container">
                 <Image src={hero_image} fluid />
             </div>
