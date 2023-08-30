@@ -14,22 +14,6 @@ const MoviePage = () => {
         isError
     } = useMovie(movieId)
 
-    if (data) {
-        const key = `movie_${movieId}`
-        localStorage.setItem(key, JSON.stringify(data))
-    
-        const storedValue = localStorage.getItem(key)
-        const latestValue = storedValue ? JSON.parse(storedValue) : null
-
-        const storedMovies: number[] = []
-        // console.log("stored value", storedValue)
-        // console.log("latest value", latestValue)
-
-        storedMovies.push(latestValue)
-        const tenLastMovies = storedMovies.slice(-10)
-        console.log("ten last movies", tenLastMovies)
-    }
-
     if (isError) {
 		return <IsErrorAlert />
 	}
