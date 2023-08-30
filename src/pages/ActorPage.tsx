@@ -1,9 +1,12 @@
 import { useParams } from 'react-router-dom'
+import { useIsFetching } from '@tanstack/react-query'
 import ActorCard from '../components/ActorCard'
 import IsErrorAlert from '../components/IsErrorAlert'
 import useActor from '../hooks/useActor'
 
 const ActorPage = () => {
+    const isFetching = useIsFetching()
+
     const { id } = useParams()
     const actorId = Number(id)
 
@@ -18,7 +21,7 @@ const ActorPage = () => {
 		)
 	}
 
-    return (
+	return !isFetching ? (
         <>
             { data &&
                 <ActorCard 
@@ -33,7 +36,7 @@ const ActorPage = () => {
                 />
             }
         </>
-    )
+    ) : null
 }
 
 export default ActorPage

@@ -1,4 +1,5 @@
 import { useParams, useSearchParams } from 'react-router-dom'
+import { useIsFetching } from '@tanstack/react-query'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
 import Pagination from '../components/Pagination'
@@ -7,6 +8,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 const GenrePage = () => {
+    const isFetching = useIsFetching()
+
     const { id, name } = useParams()
     const genreId = Number(id)
     const genreName = name
@@ -23,7 +26,7 @@ const GenrePage = () => {
 		return <IsErrorAlert />
 	}
 
-    return (
+	return !isFetching ? (
         <>
             <h1 className="h2 py-5"><span className="text-border">{genreName}</span></h1>
 
@@ -59,7 +62,7 @@ const GenrePage = () => {
                 </>
             )}
         </>
-    )
+    ) : null
 }
 
 export default GenrePage

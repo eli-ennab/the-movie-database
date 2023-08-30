@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
+import { useIsFetching } from '@tanstack/react-query'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Hero from '../components/Hero'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import useTopRatedMovies from '../hooks/useTopRatedMovies'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import useTrendingMovies from '../hooks/useTrendingMovies'
+import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 const HomePage = () => {
     const [timeWindow, setTimeWindow] = useState<string>('day')
+    const isFetching = useIsFetching()
 
     const topRatedMovies = useTopRatedMovies()
 
@@ -25,9 +28,11 @@ const HomePage = () => {
 		return <IsErrorAlert />
 	}
 
-	return (
+	return !isFetching ? (
 		<>
-			<h2 className="my-5">
+            <Hero />
+
+			<h2 id="top-rated" className="my-5">
                 <span className="text-border">
                     Top rated
                 </span>
@@ -49,21 +54,21 @@ const HomePage = () => {
 			)}
 
 
-            <h2 className="mt-5 mb-4">
+            <h2 id="trending" className="mt-5 mb-4">
                 <span className="text-border">
                     Trending
                 </span>
 			</h2>
             <ButtonGroup size="sm">
                 <Button
-                    variant="warning"
+                    variant="dark"
                     className={`mb-4 ${timeWindow === 'day' ? 'active-button' : ''}`}
                     onClick={() => setTimeWindow('day')}
                     >
                         This day
                 </Button>
                 <Button
-                    variant="warning"
+                    variant="dark"
                     className={`mb-4 ${timeWindow === 'week' ? 'active-button' : ''}`}
                     onClick={() => setTimeWindow('week')}
                     >
@@ -87,7 +92,7 @@ const HomePage = () => {
                 </Row>
             )}
 
-            <h2 className="my-5">
+            <h2 id="now-playing" className="my-5">
                 <span className="text-border">
                     Now playing
                 </span>
@@ -108,7 +113,7 @@ const HomePage = () => {
                 </Row>
             )}
 		</>
-	)
+	) : null
 }
 
 export default HomePage

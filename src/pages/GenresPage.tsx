@@ -1,9 +1,11 @@
+import { useIsFetching } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 import IsErrorAlert from '../components/IsErrorAlert'
 import useGenres from '../hooks/useGenres'
 
 const GenresPage = () => {
+    const isFetching = useIsFetching()
 
     const getGenres = useGenres()
 
@@ -11,7 +13,7 @@ const GenresPage = () => {
 		return <IsErrorAlert />
 	}
 
-    return (
+	return !isFetching ? (
         <>
             <h1 className="h2 py-5"><span className="text-border">Browse movies by genre</span></h1>
 
@@ -31,7 +33,7 @@ const GenresPage = () => {
                 </ListGroup>
             )} 
         </>
-    )
+    ) : null
 }
 
 export default GenresPage

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useIsFetching } from '@tanstack/react-query'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
 import Pagination from '../components/Pagination'
@@ -12,6 +13,7 @@ import useSearchMovies from '../hooks/useSearchMovies'
 const SearchPage = () => {
     const [searchInput, setSearchInput] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
+    const isFetching = useIsFetching()
 
     const query = searchParams.get('query') ?? ''
     const page = searchParams.get('page') ?? 1
@@ -35,7 +37,7 @@ const SearchPage = () => {
         return <IsErrorAlert />
     }
 
-    return (
+	return !isFetching ? (
         <>
             <h1 className="h2 py-5"><span className="text-border">Search in The Movie Database</span></h1>
             <Form className="form-wrapper mb-4" onSubmit={handleSubmit}>
@@ -96,7 +98,7 @@ const SearchPage = () => {
                 </>
             )} 
         </>
-    )
+    ) : null
 }
 
 export default SearchPage

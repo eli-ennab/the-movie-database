@@ -1,10 +1,13 @@
 import { useParams } from 'react-router-dom'
+import { useIsFetching } from '@tanstack/react-query'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieCard from '../components/MovieCard'
 import useMovie from '../hooks/useMovie'
 import useRecommendations from '../hooks/useRecommendations'
 
 const MoviePage = () => {    
+    const isFetching = useIsFetching()
+
     const { id } = useParams()
     const movieId = Number(id)
     const getRecommendations = useRecommendations(movieId)
@@ -18,7 +21,7 @@ const MoviePage = () => {
 		return <IsErrorAlert />
 	}
 
-    return (
+	return !isFetching ? (
         <>
             { data && getRecommendations.data && 
                 <MovieCard 
@@ -38,7 +41,7 @@ const MoviePage = () => {
                 />
             }
         </>
-    )
+    ) : null
 }
 
 export default MoviePage
