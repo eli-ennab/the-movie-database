@@ -46,6 +46,11 @@ const MovieCard: React.FC<IProps> = (
 
     const actors = cast.filter(actors => actors.known_for_department === "Acting")
 
+    const USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    })
+
     return (
         <Card className="movie-card">
         <Card.Body>
@@ -59,7 +64,7 @@ const MovieCard: React.FC<IProps> = (
                 <Card.Text>Original title: {original_title}</Card.Text>
                 <Card.Text>Runtime: {runtime} mins</Card.Text>
                 <Card.Text>Popularity: {popularity}</Card.Text>
-                <Card.Text>Budget: {budget}</Card.Text>
+                <Card.Text>Budget: {USDollar.format(budget)}</Card.Text>
                 <hr></hr>
                 <h2 className="mb-4">Actors</h2>
                 { actors && (
