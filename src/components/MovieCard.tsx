@@ -6,6 +6,7 @@ import { Cast } from '../types/Movie.types'
 import { Link } from 'react-router-dom'
 import { MovieResult } from '../types/MovieList.types'
 import na_image from '../images/na_image.png'
+import na_image_sm from '../images/na_image_sm.png'
 
 interface IProps {
     backdrop_path: string
@@ -86,7 +87,7 @@ const MovieCard: React.FC<IProps> = (
 
                 <hr></hr>
                 
-                <h3 className="h2 mb-4">If you like <span className="movie-title">{title}</span>, you might also like..</h3>
+                <h3 className="h2 mb-4">If you like <span className="movie-title">{title}</span>, you might also like...</h3>
                 { recommendations && (
                     <ListGroup className="list-group-sm">
                         {recommendations.map (movie => (
@@ -98,6 +99,7 @@ const MovieCard: React.FC<IProps> = (
                                 to={`/movies/${movie.id}`}
                             > 
                                 {movie.title || 'N/A'}
+                                <Image src={movie.backdrop_path ? URL + movie.backdrop_path : na_image_sm} className="mb-4 border-img" fluid />
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
