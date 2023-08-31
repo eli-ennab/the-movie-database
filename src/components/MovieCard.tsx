@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -56,53 +55,11 @@ const MovieCard: React.FC<IProps> = (
         currency: 'USD',
     })
 
-    /*
-    // TRY 1
-    const [movies, setMovies] = useState<MovieResponse[] | []>()
-
-    localStorage.setItem('movies', JSON.stringify(movies)) 
-    const result = localStorage.getItem('movies')
-    result ? JSON.parse(result) : []
-    const movieList = movies?.push(JSON.stringify(result))
-    setMovies(movieList)
-    console.log("result", result)
-    */
-
-    /*
-    // TRY 2
-    useEffect(() => {
-        localStorage.setItem('movies', JSON.stringify(movies)) 
-    }, [movies])
-
-    const movies = localStorage.getItem('movies')
-    const oldMovies: MovieResponse[] = []
-    // const initialMoviesState = result ? JSON.parse(result) : []
-    
-    // const [movies, setMovies] = useState<MovieResponse[] | []>(initialMoviesState)
-    
-    useEffect(() => {
-        localStorage.setItem('movies', JSON.stringify(movie))
-        oldMovies.push(movies)
-    }, [movie, movies, oldMovies])
-
-    console.log(oldMovies)
-    */
-
-    /*
-    // TRY 3
-    const [storedMovies, setStoredMovies] = useState()
-
-    const movieList: string[] = []
-    localStorage.setItem(`${movieId}`, JSON.stringify(movie))
-    const storedData = localStorage.getItem('movies')
-    const result = storedData ? JSON.parse(storedData) : []
-    movieList.push(result)
-    console.log(movieList)
-
-    useEffect(() => {
-        setStoredMovies(movieList)
-    }, [movieList])
-    */
+    const jsonMovies = localStorage.getItem('movies') ?? '[]'
+    const movies: MovieResponse[] = JSON.parse(jsonMovies)
+    movies.push(movie)
+    localStorage.setItem('movies', JSON.stringify(movies))
+    console.log(movies)
 
     return (
         <Card className="movie-card">
