@@ -3,14 +3,14 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { FaGithub } from 'react-icons/fa'
-import logo_white from '../images/logo_white.png'
+import damoviedb_logo from '../images/damoviedb_logo.png'
 
 const Navigation = () => {
 	return (
         <Navbar data-bs-theme="dark" expand="md">
             <Container>
                 <Navbar.Brand as={Link} to="/" className="h1">
-                    <img src={logo_white} className="mx-2" height={35} alt="The Movie Database"/>
+                    <img src={damoviedb_logo} className="mx-2" height={35} alt="The Movie Database"/>
                     The Movie Database
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
