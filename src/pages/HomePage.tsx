@@ -32,28 +32,6 @@ const HomePage = () => {
 		<>
             <Hero />
 
-			<h2 id="top-rated" className="my-5">
-                <span className="text-border">
-                    Top rated
-                </span>
-			</h2>
-			{ topRatedMovies.data && topRatedMovies.data.results && (
-				<Row xs={1} md={3} lg={5} className="g-4">
-					{topRatedMovies.data.results.slice(0, 10).map(movie => (
-						<Col key={movie.id}>
-							<MovieInListCard 
-                                poster_path={movie.poster_path} 
-                                title={movie.title} 
-                                id={movie.id} 
-                                vote_average={movie.vote_average}
-                                release_date={movie.release_date} 
-                            />
-						</Col>
-					))}
-				</Row>
-			)}
-
-
             <h2 id="trending" className="mt-5 mb-4">
                 <span className="text-border">
                     Trending
@@ -79,6 +57,27 @@ const HomePage = () => {
 			{ trendingMovies.data && trendingMovies.data.results && (
                 <Row xs={1} md={3} lg={5} className="g-4">
                     {trendingMovies.data.results.slice(0, 10).map(movie => (
+                        <Col key={movie.id}>
+                            <MovieInListCard 
+                                poster_path={movie.poster_path} 
+                                title={movie.title} 
+                                id={movie.id} 
+                                vote_average={movie.vote_average}
+                                release_date={movie.release_date} 
+                            />
+                        </Col>
+                    ))}
+                </Row>
+            )}
+
+            <h2 id="top-rated" className="my-5">
+                <span className="text-border">
+                    Top rated
+                </span>
+            </h2>
+            { topRatedMovies.data && topRatedMovies.data.results && (
+                <Row xs={1} md={3} lg={5} className="g-4">
+                    {topRatedMovies.data.results.slice(0, 10).map(movie => (
                         <Col key={movie.id}>
                             <MovieInListCard 
                                 poster_path={movie.poster_path} 
