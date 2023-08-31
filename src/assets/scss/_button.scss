@@ -8,16 +8,15 @@
 
 .btn:hover {
     background-color: black;
-    border-color: $olive-green;
-    color: $olive-green;
+    color: white;
 }
 
-.active-button {
+.active-button,
+.active-button:hover {
     background-color: $bright-yellow;
     color: black;
 }
 
-.active-button:hover,
 .active-button:focus {
     background-color: $bright-yellow;
     color: black;
