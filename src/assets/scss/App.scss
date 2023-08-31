@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'config';
 @import 'button';
 @import 'card';
-@import 'config';
 @import 'form';
 @import 'hero';
 @import 'list';
@@ -14,8 +14,3 @@ body {
     background-color: black;
     height: 100%;
 }
-
-.form-control:focus {
-    border-color: $gold;
-    box-shadow: none;
-  }

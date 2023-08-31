@@ -6,7 +6,24 @@
     font-family: 'Karla', sans-serif;
 }
 
+.btn:hover {
+    background-color: black;
+    border-color: $olive-green;
+    color: $olive-green;
+}
+
 .active-button {
-    background-color: rgb(212, 255, 0);
+    background-color: $bright-yellow;
     color: black;
+}
+
+.active-button:hover,
+.active-button:focus {
+    background-color: $bright-yellow;
+    color: black;
+}
+
+.submit-search-btn {
+    border-radius: 0;
+    border-color: $olive-green;
 }

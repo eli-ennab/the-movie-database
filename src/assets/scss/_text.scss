@@ -49,8 +49,8 @@ p,
 
 .text-border {
     padding: 5px;
-    border-top: 1px solid $gold;
-    border-bottom: 1px solid $gold;
+    border-top: 1px solid $bright-yellow;
+    border-bottom: 1px solid $bright-yellow;
 }
 
 .list-item.sm {
@@ -58,7 +58,13 @@ p,
 }
 
 hr {
-    color: $gold;
+    color: $olive-green;
+}
+
+a.list-item:hover {
+    background-color: black;
+    border-color: $olive-green;
+    color: $olive-green;
 }
 
 .hero-header {
@@ -77,9 +83,9 @@ hr {
     padding: 10px;
     color: white;
         a {
-            color: rgb(212, 255, 0);
+            color: $bright-yellow;
         }
         a:hover {
-            color: rgb(141, 163, 1);
+            color: $olive-green;
         }
 }
