@@ -5,11 +5,15 @@
     position: relative;
 }
 
+.hero-header {
+    font-family: 'Fugaz One', cursive;
+}
+
 .hero-text {
     display: flex;
     flex-direction: column;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.9rem;
+    font-size: 2rem;
     font-weight: 800;
     position: absolute;
     top: 10%;
@@ -20,7 +24,6 @@
             color: rgb(212, 255, 0);
         }
         a:hover {
-            background-color: white;
             color: rgb(141, 163, 1);
         }
 }
