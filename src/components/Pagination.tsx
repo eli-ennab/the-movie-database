@@ -26,7 +26,7 @@ const Pagination: React.FC<IPaginationProps> = (
 				<Button
 					disabled={!hasPreviousPage}
 					onClick={onPreviousPage}
-					variant="light"
+					variant="dark"
 				>Previous Page</Button>
 			</div>
 
@@ -36,7 +36,7 @@ const Pagination: React.FC<IPaginationProps> = (
 				<Button
 					disabled={!hasNextPage}
 					onClick={onNextPage}
-					variant="light"
+					variant="dark"
 				>Next Page</Button>
 			</div>
 		</div>
