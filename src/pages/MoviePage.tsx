@@ -25,6 +25,7 @@ const MoviePage = () => {
         <>
             { data && getRecommendations.data && 
                 <MovieCard 
+                    movie={data}
                     backdrop_path={data.backdrop_path} 
                     title={data.title} 
                     release_date={data.release_date} 
