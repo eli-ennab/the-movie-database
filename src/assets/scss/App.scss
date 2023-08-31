@@ -14,3 +14,8 @@ body {
     background-color: black;
     height: 100%;
 }
+
+.form-control:focus {
+    border-color: $gold;
+    box-shadow: none;
+  }
