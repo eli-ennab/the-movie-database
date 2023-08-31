@@ -60,3 +60,26 @@ p,
 hr {
     color: $gold;
 }
+
+.hero-header {
+    font-family: 'Fugaz One', cursive;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    padding: 10px;
+    color: white;
+        a {
+            color: rgb(212, 255, 0);
+        }
+        a:hover {
+            color: rgb(141, 163, 1);
+        }
+}
