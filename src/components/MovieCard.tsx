@@ -59,7 +59,6 @@ const MovieCard: React.FC<IProps> = (
     const movies: MovieResponse[] = JSON.parse(jsonMovies)
     movies.push(movie)
     localStorage.setItem('movies', JSON.stringify(movies))
-    console.log(movies)
 
     return (
         <Card className="movie-card">
