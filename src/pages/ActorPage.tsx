@@ -23,7 +23,7 @@ const ActorPage = () => {
 
 	return !isFetching ? (
         <>
-            { data &&
+            {data &&
                 <ActorCard 
                     profile_path={data.profile_path} 
                     name={data.name} 

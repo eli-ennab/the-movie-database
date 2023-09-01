@@ -23,7 +23,7 @@ const MoviePage = () => {
 
 	return !isFetching ? (
         <>
-            { data && getRecommendations.data && 
+            {data && getRecommendations.data && 
                 <MovieCard 
                     movie={data}
                     backdrop_path={data.backdrop_path} 

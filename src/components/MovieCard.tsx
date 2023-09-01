@@ -1,5 +1,3 @@
-import Card from 'react-bootstrap/Card'
-import Image from 'react-bootstrap/Image'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { useParams } from 'react-router-dom'
 import { Cast, MovieResponse } from '../types/Movie.types'
@@ -7,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { MovieResult } from '../types/MovieList.types'
 import na_image from '../images/na_image.png'
 import na_image_sm from '../images/na_image_sm.png'
+import Card from 'react-bootstrap/Card'
+import Image from 'react-bootstrap/Image'
 
 interface IProps {
     movie: MovieResponse
@@ -62,8 +62,8 @@ const MovieCard: React.FC<IProps> = (
 
     return (
         <Card className="movie-card">
-        <Card.Body>
-            <Image src={backdrop_path ? URL + backdrop_path : na_image} className="mb-4 border-img" fluid />
+            <Card.Body>
+                <Image src={backdrop_path ? URL + backdrop_path : na_image} className="mb-4 border-img" fluid />
                 <Card.Title>{title || 'N/A'}</Card.Title>
                 <Card.Text>Release date: {release_date || 'N/A'}</Card.Text>
                 <Card.Text><span className="vote-average">{vote_average || 'N/A'}</span></Card.Text>
@@ -74,7 +74,9 @@ const MovieCard: React.FC<IProps> = (
                 <Card.Text>Runtime: {runtime || 'N/A'} mins</Card.Text>
                 <Card.Text>Popularity: {popularity || 'N/A'}</Card.Text>
                 <Card.Text>Budget: {USDollar.format(budget) || 'N/A'}</Card.Text>
+
                 <hr></hr>
+
                 <h2 className="mb-4">Actors</h2>
                 { actors && (
                     <ListGroup className="list-group-sm">
@@ -93,7 +95,7 @@ const MovieCard: React.FC<IProps> = (
                 )} 
 
                 <hr></hr>
-                
+
                 <h3 className="h2 mb-4">If you like <span className="movie-title">{title}</span>, you might also like...</h3>
                 { recommendations && (
                     <ListGroup className="list-group-sm">
@@ -112,7 +114,7 @@ const MovieCard: React.FC<IProps> = (
                     </ListGroup>
                 )} 
             </Card.Body>
-    </Card>
+        </Card>
     )
 }
 

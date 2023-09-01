@@ -30,7 +30,7 @@ const GenrePage = () => {
         <>
             <h1 className="h2 py-5"><span className="text-border">{genreName}</span></h1>
 
-            { data && data.results && (
+            {data && data.results && (
                 <>
                     <p>{data.total_results.toLocaleString()} results for {genreName}</p>
 

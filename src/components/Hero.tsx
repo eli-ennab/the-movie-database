@@ -1,5 +1,5 @@
-import Image from 'react-bootstrap/Image'
 import hero_image from '../images/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg'
+import Image from 'react-bootstrap/Image'
 
 const Hero = () => {
     return (

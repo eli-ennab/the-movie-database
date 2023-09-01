@@ -1,11 +1,6 @@
 /**
- * Test API towards The Movie DB
+ * API, The Movie DB
  * Docs: https://developer.themoviedb.org/docs
- * 
- * For example, the list of all genres: 
- * https://api.themoviedb.org/3/genre/movie/list?language=en
- * Or one movie:
- * https://api.themoviedb.org/3/movie/550?api_key=${VITE_API_KEY}
  */
 
 import axios from 'axios'
@@ -16,7 +11,6 @@ const BASE_URL = 'https://api.themoviedb.org/3'
 const FAKE_DELAY = 2000
 const include_adult = 'include_adult=false'
 const language = 'language=en-US'
-// const VITE_BEARER_ACCESS_TOKEN = import.meta.env.VITE_BEARER_ACCESS_TOKEN
 
 const instance = axios.create({
     baseURL: BASE_URL,
@@ -24,7 +18,6 @@ const instance = axios.create({
     headers: {
         "Content-Type": 'application/json',
         "Accept": "application/json",
-        // "Authorization": "Bearer VITE_BEARER_ACCESS_TOKEN",
     }
 })
 
