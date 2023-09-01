@@ -137,6 +137,10 @@ const HomePage = () => {
                     ))}
                 </Row>
             )}
+
+            { latestMovies.length === 0 && (
+                <p>You do not have any clicked flicks yet.</p>
+            )}
 		</>
 	) : null
 }
