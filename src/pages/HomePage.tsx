@@ -116,9 +116,9 @@ const HomePage = () => {
                 </Row>
             )}
 
-            <h2 id="users-recent-movies" className="my-5">
+            <h2 id="users-recently-seen" className="my-5">
                 <span className="text-border">
-                    Recent movies you watched
+                    Recently seen
                 </span>
 			</h2>
 

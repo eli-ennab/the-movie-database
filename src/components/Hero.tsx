@@ -1,6 +1,5 @@
-import hero_image from '../images/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg'
-// import hero_image_2 from '../images/samuel-regan-asante-wMkaMXTJjlQ-unsplash_2.jpg'
 import Image from 'react-bootstrap/Image'
+import hero_image from '../images/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg'
 
 const Hero = () => {
     return (
@@ -21,13 +20,12 @@ const Hero = () => {
                     <a href="#now-playing">
                         Now Playing
                     </a>
-                    <a href="#users-recent-movies">
-                    Recent movies you watched
+                    <a href="#users-recently-seen">
+                        Recently Seen
                     </a>
                 </div>
                 <div className="image-container">
                     <Image src={hero_image} fluid />
-                    {/* <Image src={hero_image_2} fluid /> */}
                 </div>
             </div>
         </>
