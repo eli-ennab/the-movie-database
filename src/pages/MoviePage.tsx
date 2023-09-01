@@ -6,10 +6,9 @@ import useMovie from '../hooks/useMovie'
 import useRecommendations from '../hooks/useRecommendations'
 
 const MoviePage = () => {    
-    const isFetching = useIsFetching()
-
     const { id } = useParams()
     const movieId = Number(id)
+    const isFetching = useIsFetching()
     const getRecommendations = useRecommendations(movieId)
 
     const {
