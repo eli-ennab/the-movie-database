@@ -4,10 +4,9 @@ import { useIsFetching } from '@tanstack/react-query'
 import IsErrorAlert from '../components/IsErrorAlert'
 import MovieInListCard from '../components/MovieInListCard'
 import Pagination from '../components/Pagination'
+import SearchForm from '../components/SearchForm'
 import useSearchMovies from '../hooks/useSearchMovies'
-import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 
 const SearchPage = () => {
@@ -46,30 +45,16 @@ const SearchPage = () => {
                 </span>
             </h1>
 
-            <Form className="form-wrapper mb-4" onSubmit={handleSubmit}>
-                <Form.Group controlId="searchQuery">
-                <Form.Label>Search for movies</Form.Label>
-                    <Form.Control 
-                        className="search-form" 
-                        type="text" 
-                        placeholder="Enter your search"
-                        onChange={e => setSearchInput(e.target.value)}
-                        value={searchInput}
-                    />
-                </Form.Group>
-
-                <Button 
-                    className="submit-search-btn py-1.5 mx-2" 
-                    variant="dark" 
-                    type="submit"
-                    disabled={!searchInput.trim().length}
-                >
-                    Search
-                </Button>
-            </Form>
+            <SearchForm
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+                onSubmit={handleSubmit}
+			/>
 
             {query.length > 0 && data?.total_results === 0 && (
-                <p>'{query}' does not exist in the database.</p>
+                <p>
+                    '{query}' does not exist in the database.
+                </p>
             )}
 
             {data && data.results.length > 0 && (
