@@ -21,6 +21,9 @@ const Hero = () => {
                     <a href="#now-playing">
                         Now Playing
                     </a>
+                    <a href="#users-recent-movies">
+                    Recent movies you watched
+                    </a>
                 </div>
                 <div className="image-container">
                     <Image src={hero_image} fluid />
