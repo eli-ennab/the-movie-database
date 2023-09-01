@@ -41,7 +41,7 @@ const SearchPage = () => {
         <>
             <h1 className="h2 py-5">
                 <span className="text-border">
-                    Search in The Movie Database
+                    Search The Movie Database
                 </span>
             </h1>
 
